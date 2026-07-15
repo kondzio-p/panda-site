@@ -1286,6 +1286,21 @@ a.footer-line:hover {
     grid-template-columns: 1fr;
   }
 
+  .about-media-tag {
+    left: -12px;
+    bottom: -18px;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .about-media-tag-num {
+    font-size: 24px;
+  }
+
+  .about-media-tag-label {
+    font-size: 10px;
+  }
+
   .gallery-grid {
     grid-template-columns: 1fr;
     grid-auto-rows: 240px;
