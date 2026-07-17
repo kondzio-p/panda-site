@@ -35,7 +35,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth — REMOVED: conflicts with GSAP ScrollTrigger
+     on mobile causing scroll to freeze/jank. GSAP ScrollToPlugin handles
+     smooth anchor scrolling instead. */
 }
 
 
@@ -163,6 +165,8 @@ button {
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid transparent;
   transition: height .35s var(--ease), border-color .35s ease, background .35s ease;
+  will-change: transform;          /* promote to GPU layer — reduces backdrop-filter repaint on scroll */
+  transform: translateZ(0);        /* force compositing layer */
 }
 
 .nav.is-scrolled {
