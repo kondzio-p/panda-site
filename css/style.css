@@ -293,7 +293,7 @@ button {
 .nav-burger span {
   display: block;
   width: 18px;
-  height: 1.5px;
+  height: 2px;
   background: var(--off-white);
   transition: transform .3s var(--ease), opacity .3s ease;
 }
@@ -1263,6 +1263,10 @@ a.footer-line:hover {
   .hero {
     padding: calc(var(--nav-h) + 24px) 18px 110px;
     align-items: flex-end;
+  }
+
+  .hero-eyebrow {
+    display: none;
   }
 
   .hero-title {
