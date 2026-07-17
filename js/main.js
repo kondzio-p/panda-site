@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ScrollTrigger.create({
     start: 'top -10',
     end: 99999,
-    onUpdate: (self) => {
-      nav.classList.toggle('is-scrolled', self.scroll() > 10);
-    }
+    toggleClass: { targets: nav, className: 'is-scrolled' }
   });
 
   /* ============ NAV: smooth scroll + close drawer on link click ============ */
@@ -186,11 +184,18 @@ document.addEventListener('DOMContentLoaded', () => {
       once: true,
       onEnter: () => {
         const obj = { val: 0 };
+        let lastRendered = -1;
         gsap.to(obj, {
           val: target,
           duration: 1.6,
           ease: 'power2.out',
-          onUpdate: () => { el.textContent = Math.round(obj.val); }
+          onUpdate: () => {
+            const rounded = Math.round(obj.val);
+            if (rounded !== lastRendered) {
+              lastRendered = rounded;
+              el.textContent = rounded;
+            }
+          }
         });
       }
     });
