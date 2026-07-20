@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navItems = [
     ...document.querySelectorAll('.nav-link[href^="#"], .nav-drawer-link[href^="#"]')
   ];
-  const sectionIds = ['onas', 'uslugi', 'proces', 'realizacje', 'kontakt'];
+  const sectionIds = ['onas', 'uslugi', 'proces', 'realizacje', 'cennik', 'kontakt'];
 
   function setActiveNav(id) {
     navItems.forEach((item) => {
@@ -157,8 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ============ HERO entrance ============ */
+  let heroTl;
   if (!prefersReducedMotion) {
-    const heroTl = gsap.timeline({
+    heroTl = gsap.timeline({
+      paused: true,
       defaults: { ease: 'power3.out' },
       onComplete: () => {
         // Clear GSAP properties to avoid interference with CSS hover transition styles
@@ -172,6 +174,43 @@ document.addEventListener('DOMContentLoaded', () => {
       .from('.hero-sub', { opacity: 0, y: 24, duration: 0.8 }, 0.62)
       .from('.hero-actions .btn', { opacity: 0, y: 18, duration: 0.6, stagger: 0.1 }, 0.78)
       .from('.hero-scroll-hint', { opacity: 0, duration: 0.6 }, 1);
+  }
+
+  /* ============ LOADING SCREEN ============ */
+  const loadingScreen = document.getElementById('loadingScreen');
+  const loadingBar = document.getElementById('loadingBar');
+  const loadingLogoBright = document.getElementById('loadingLogoBright');
+
+  if (loadingScreen && loadingBar && loadingLogoBright) {
+    const tlLoader = gsap.timeline({
+      onComplete: () => {
+        loadingScreen.style.display = 'none';
+        if (heroTl) heroTl.play();
+      }
+    });
+
+    tlLoader.to(loadingBar, { width: '100%', duration: 1.8, ease: 'power2.inOut' }, 0)
+            .to(loadingLogoBright, { clipPath: 'inset(0% 0 0 0)', duration: 1.8, ease: 'power2.inOut' }, 0)
+            .to(loadingScreen, { opacity: 0, duration: 0.5, delay: 0.2, ease: 'power2.out' });
+  } else {
+    if (heroTl) heroTl.play();
+  }
+
+  /* ============ FAB TOGGLE ============ */
+  const fabWrapper = document.getElementById('fabWrapper');
+  const fabBtn = document.getElementById('fabBtn');
+
+  if (fabWrapper && fabBtn) {
+    fabBtn.addEventListener('click', () => {
+      fabWrapper.classList.toggle('is-open');
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!fabWrapper.contains(e.target)) {
+        fabWrapper.classList.remove('is-open');
+      }
+    });
   }
 
   /* ============ STATS counters (triggered once on scroll) ============ */
