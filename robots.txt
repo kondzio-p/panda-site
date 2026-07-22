@@ -1,0 +1,21 @@
+# Panda Auto Detailing Toruń
+
+User-agent: *
+Allow: /
+
+# Roboty AI (Google AI Overviews, ChatGPT Search, Perplexity, Claude) korzystają
+# z reguł powyżej i mają obecnie pełny dostęp — dzięki temu firma może być
+# cytowana w odpowiedziach generowanych przez AI.
+#
+# Gdyby kiedyś zaszła potrzeba wykluczenia ich z treningu/odpowiedzi, wystarczy
+# odkomentować poniższe reguły:
+#
+# User-agent: Google-Extended
+# User-agent: GPTBot
+# User-agent: OAI-SearchBot
+# User-agent: PerplexityBot
+# User-agent: ClaudeBot
+# User-agent: CCBot
+# Disallow: /
+
+Sitemap: https://pandadetailing.pl/sitemap.xml

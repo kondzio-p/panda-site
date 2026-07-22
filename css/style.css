@@ -1469,6 +1469,13 @@ a.footer-line:hover {
   gap: 12px;
 }
 
+/* podpis wykonawcy strony */
+.footer-credit {
+  height: 22px;
+  width: auto;
+  opacity: .5;
+}
+
 .footer-top {
   color: var(--muted);
   transition: color .2s ease;
