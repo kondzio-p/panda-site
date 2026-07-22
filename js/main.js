@@ -2,6 +2,17 @@
 // PANDA AUTO DETAILING TORUŃ — main.js
 // =====================================================
 
+/* ============ Rok w stopce ============ */
+// Celowo poza blokiem try z GSAP-em poniżej: gdyby biblioteka z CDN-u się nie
+// wczytała, rok w stopce i tak musi być aktualny. W HTML-u zostaje wpisany rok
+// jako zapas dla wyłączonego JavaScriptu.
+document.addEventListener('DOMContentLoaded', () => {
+  const year = String(new Date().getFullYear());
+  document.querySelectorAll('[data-year]').forEach((el) => {
+    el.textContent = year;
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   try {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -548,7 +559,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  /* ============ Footer year safety (in case of future edits) ============ */
   } catch (e) {
     console.error('GSAP initialisation error:', e);
   }
