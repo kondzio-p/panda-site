@@ -1561,8 +1561,12 @@ a.footer-line:hover {
   overflow: hidden;
 }
 
+/* Wysokość musi być konkretna, żeby dało się ją animować (auto się nie animuje).
+   Wzór: liczba pozycji × 44px + odstępy (n-1) × 12px + 40px paddingu + 64px przycisku.
+   Przy 6 pozycjach: 264 + 60 + 40 + 64 = 428px — po dodaniu lub usunięciu
+   pozycji w .fab-menu trzeba przeliczyć tę wartość. */
 .fab-wrapper.is-open {
-  height: 372px;
+  height: 428px;
 }
 
 .fab-menu {

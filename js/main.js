@@ -205,6 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
       fabWrapper.classList.toggle('is-open');
     });
 
+    // Close after picking an option — inaczej kotwica w obrębie strony
+    // (lokalizacja) przewija stronę, a rozwinięte menu zasłania cel
+    fabWrapper.querySelectorAll('.fab-menu-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        fabWrapper.classList.remove('is-open');
+      });
+    });
+
     // Close on click outside
     document.addEventListener('click', (e) => {
       if (!fabWrapper.contains(e.target)) {
