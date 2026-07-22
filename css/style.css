@@ -980,28 +980,275 @@ button {
   grid-column: span 2;
 }
 
-/* ===================== CENNIK PLACEHOLDER ===================== */
-.pricing-placeholder {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 32px;
+/* ===================== CENNIK ===================== */
+.pricing {
   background: var(--surface);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  padding: 130px 32px;
 }
 
-.pricing-placeholder h2 {
-  font-family: var(--display);
-  font-size: clamp(2.4rem, 6vw, 5.2rem);
-  color: var(--off-white);
-  text-transform: uppercase;
+.pricing-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.pricing-head {
+  max-width: 640px;
+  margin-bottom: 60px;
+}
+
+.pricing-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 50ch;
   margin: 0;
+}
+
+.pricing-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+
+.price-group {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 32px 30px 12px;
+}
+
+/* trzecia grupa (folie) zajmuje pełną szerokość i łamie się na 2 kolumny */
+.price-group--wide {
+  grid-column: 1 / -1;
+}
+
+.price-group-head {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+}
+
+.price-group-num {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.price-group-head h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.1;
-  max-width: 18ch;
+  margin: 0;
+}
+
+.price-group-note {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+  margin: 8px 0 0;
+}
+
+.price-table--flat {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+}
+
+.price-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.price-table > .price-row:last-child {
+  border-bottom: none;
+}
+
+/* nieparzysta liczba pozycji — ostatnia domyka rząd na pełnej szerokości */
+.price-table--flat > .price-row:last-child {
+  grid-column: 1 / -1;
+}
+
+.price-row--head {
+  padding: 16px 0 12px;
+}
+
+.price-row--head .price-name,
+.price-row--head .price-val {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-2);
+}
+
+.price-name {
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(243, 242, 236, 0.88);
+}
+
+.price-vals {
+  display: grid;
+  grid-template-columns: repeat(3, 88px);
+  text-align: center;
+}
+
+/* jedna cena obowiązująca dla wszystkich rozmiarów */
+.price-vals--all {
+  grid-template-columns: 264px;
+}
+
+.price-val {
+  font-family: var(--mono);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--off-white);
+  white-space: nowrap;
+}
+
+.price-val--custom {
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.price-table--flat .price-vals {
+  grid-template-columns: auto;
+  text-align: right;
+}
+
+.price-table--flat .price-val {
+  color: var(--accent);
+}
+
+.pricing-foot {
+  margin-top: 44px;
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.pricing-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.pricing-note-mark {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border: 1px solid var(--accent-dim);
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+}
+
+/* poniżej ~1200px kolumny z cenami zabierają zbyt dużo miejsca nazwom usług */
+@media (max-width: 1200px) {
+  .pricing-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* cennik — układ mobilny: nagłówek tabeli znika, ceny stają się kaflami
+   z podpisem rozmiaru z atrybutu data-size */
+@media (max-width: 700px) {
+  .pricing {
+    padding: 90px 18px;
+  }
+
+  .price-group {
+    padding: 26px 20px 14px;
+    border-radius: 18px;
+  }
+
+  .price-table--flat {
+    grid-template-columns: 1fr;
+  }
+
+  .price-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  .price-row--head {
+    display: none;
+  }
+
+  .price-name {
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  .price-vals,
+  .price-vals--all {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .price-vals--all {
+    grid-template-columns: 1fr;
+  }
+
+  .price-val {
+    padding: 9px 6px;
+    background: var(--surface);
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  .price-val[data-size]::before {
+    content: attr(data-size);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+
+  .price-table--flat .price-row {
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+  }
+
+  .price-table--flat .price-val {
+    padding: 0;
+    background: none;
+  }
 }
 
 /* ===================== CONTACT ===================== */
@@ -1011,9 +1258,29 @@ button {
   margin: 0 auto;
 }
 
+.contact-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
 .contact-head {
   max-width: 640px;
-  margin-bottom: 56px;
+}
+
+.contact-map {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 3;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .contact-sub {
@@ -1384,6 +1651,10 @@ a.footer-line:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .contact-top {
+    grid-template-columns: 1fr;
+  }
+
   .contact-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1472,6 +1743,10 @@ a.footer-line:hover {
 
   .services-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    aspect-ratio: 16 / 9;
   }
 
   .contact-grid {
