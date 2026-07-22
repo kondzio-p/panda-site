@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nie znaleziono strony — Panda Auto Detailing Toruń</title>
+
+		<!-- przekierowanie na stronę główną po 5 s; działa również bez JavaScriptu -->
+		<meta
+			http-equiv="refresh"
+			content="5; url=https://pandadetailing.pl/"
+		/>
+		<meta name="robots" content="noindex, follow" />
+
+		<link rel="icon" type="image/png" href="/media/logo-panda.png" />
+		<link rel="apple-touch-icon" href="/media/logo-panda.png" />
+		<meta name="theme-color" content="#0a0a0a" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Style są wpisane w stronę celowo: błąd 404 może zostać zwrócony
+		     spod dowolnego adresu, więc strona nie powinna zależeć od
+		     zewnętrznego arkusza, który mógłby się nie wczytać. -->
+		<style>
+			:root {
+				--bg: #0a0a0a;
+				--off-white: #f3f2ec;
+				--accent: #ffb000;
+				--muted: #8c8c86;
+				--line: rgba(243, 242, 236, 0.1);
+				--display: "Bebas Neue", "Arial Narrow", sans-serif;
+				--body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+				--mono: "JetBrains Mono", monospace;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 40px 24px;
+				background: var(--bg);
+				color: var(--off-white);
+				font-family: var(--body);
+				-webkit-font-smoothing: antialiased;
+			}
+
+			img {
+				display: block;
+				max-width: 100%;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			::selection {
+				background: var(--accent);
+				color: #0a0a0a;
+			}
+
+			:focus-visible {
+				outline: 2px solid var(--accent);
+				outline-offset: 3px;
+			}
+
+			.nf {
+				width: 100%;
+				max-width: 620px;
+				text-align: center;
+			}
+
+			.nf-logo {
+				width: 92px;
+				margin: 0 auto 34px;
+			}
+
+			.nf-code {
+				font-family: var(--mono);
+				font-size: 12.5px;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: var(--accent);
+				margin: 0 0 18px;
+			}
+
+			.nf-title {
+				font-family: var(--display);
+				font-weight: 400;
+				font-size: clamp(2.1rem, 6.5vw, 3.6rem);
+				line-height: 1.08;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				margin: 0 0 20px;
+			}
+
+			.nf-title em {
+				font-style: normal;
+				color: var(--accent);
+			}
+
+			.nf-sub {
+				font-size: 15.5px;
+				line-height: 1.65;
+				color: var(--muted);
+				margin: 0 auto 36px;
+				max-width: 42ch;
+			}
+
+			.nf-bar {
+				height: 2px;
+				width: 100%;
+				max-width: 260px;
+				margin: 0 auto 34px;
+				background: var(--line);
+				border-radius: 2px;
+				overflow: hidden;
+			}
+
+			.nf-bar i {
+				display: block;
+				height: 100%;
+				width: 0;
+				background: var(--accent);
+				animation: nf-fill 5s linear forwards;
+			}
+
+			@keyframes nf-fill {
+				to {
+					width: 100%;
+				}
+			}
+
+			.nf-btn {
+				display: inline-block;
+				padding: 14px 30px;
+				border-radius: 100px;
+				background: var(--accent);
+				color: #0a0a0a;
+				font-size: 14.5px;
+				font-weight: 700;
+				transition:
+					transform 0.25s ease,
+					background 0.25s ease;
+			}
+
+			.nf-btn:hover {
+				background: #ffc233;
+				transform: translateY(-2px);
+			}
+
+			/* Pasek celowo animuje się także przy prefers-reduced-motion:
+			   to wskaźnik postępu odliczania, a nie efekt ozdobny — zatrzymany
+			   pokazywałby od razu 100% i gubił informację, ile czasu zostało.
+			   Wyłączamy tu tylko ruch dekoracyjny. */
+			@media (prefers-reduced-motion: reduce) {
+				.nf-btn:hover {
+					transform: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<main class="nf">
+			<a href="https://pandadetailing.pl/">
+				<img
+					src="media/logo-panda.png"
+					alt="Panda Auto Detailing Toruń"
+					class="nf-logo"
+					width="92"
+					height="92"
+				/>
+			</a>
+
+			<p class="nf-code">Błąd 404</p>
+
+			<h1 class="nf-title">
+				Ups, takie miejsce<br />na tej stronie <em>nie istnieje</em>.
+			</h1>
+
+			<p class="nf-sub">
+				Za <span id="nfCount">5</span> s wrócisz na stronę główną.
+			</p>
+
+			<div class="nf-bar" aria-hidden="true"><i></i></div>
+
+			<a href="https://pandadetailing.pl/" class="nf-btn">Wróć teraz</a>
+		</main>
+
+		<script>
+			// odlicza sekundy widoczne dla użytkownika — samo przekierowanie
+			// realizuje <meta http-equiv="refresh"> w <head>
+			(function () {
+				var el = document.getElementById("nfCount");
+				var left = 5;
+				var timer = setInterval(function () {
+					left -= 1;
+					if (left <= 0) {
+						clearInterval(timer);
+						el.textContent = "0";
+						return;
+					}
+					el.textContent = String(left);
+				}, 1000);
+			})();
+		</script>
+	</body>
+</html>
