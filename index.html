@@ -1,616 +1,1374 @@
 <!doctype html>
 <html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Panda Auto Detailing Toruń — Staranność w każdym detalu</title>
+		<meta
+			name="description"
+			content="Panda Auto Detailing Toruń — detailing wnętrza i karoserii, powłoki ceramiczne, PPF, korekta lakieru. Indywidualne podejście do każdego auta."
+		/>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Panda Auto Detailing Toruń — Staranność w każdym detalu</title>
-	<meta name="description"
-		content="Panda Auto Detailing Toruń — detailing wnętrza i karoserii, powłoki ceramiczne, PPF, korekta lakieru. Indywidualne podejście do każdego auta." />
+		<link rel="icon" type="image/png" href="media/logo-panda.png" />
+		<link rel="apple-touch-icon" href="media/logo-panda.png" />
+		<meta name="theme-color" content="#0a0a0a" />
 
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
-		rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
 
-	<link rel="stylesheet" href="css/style.css" />
-</head>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
 
-<body>
-	<!-- ============ LOADING SCREEN ============ -->
-	<div class="loading-screen" id="loadingScreen">
-		<div class="loading-container">
-			<div class="loading-logo-wrap">
-				<img src="media/logo-panda.png" alt="Panda Detailing" class="loading-logo loading-logo--dimmed" />
-				<img src="media/logo-panda.png" alt="Panda Detailing" class="loading-logo loading-logo--bright" id="loadingLogoBright" />
-			</div>
-			<div class="loading-bar-wrap">
-				<div class="loading-bar" id="loadingBar"></div>
+	<body>
+		<!-- ============ LOADING SCREEN ============ -->
+		<div class="loading-screen" id="loadingScreen">
+			<div class="loading-container">
+				<div class="loading-logo-wrap">
+					<img
+						src="media/logo-panda.png"
+						alt="Panda Detailing"
+						class="loading-logo loading-logo--dimmed"
+					/>
+					<img
+						src="media/logo-panda.png"
+						alt="Panda Detailing"
+						class="loading-logo loading-logo--bright"
+						id="loadingLogoBright"
+					/>
+				</div>
+				<div class="loading-bar-wrap">
+					<div class="loading-bar" id="loadingBar"></div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- progress / glow cursor canvas -->
-	<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+		<!-- progress / glow cursor canvas -->
+		<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-	<!-- ============ NAV ============ -->
-	<header class="nav" id="siteNav">
-		<div class="nav-inner">
-			<a href="#hero" class="nav-logo">
-				<img src="media/logo-panda.png" alt="Logo Panda Detailing" class="nav-logo-img" />
-				<span class="nav-logo-text">Panda<em>Detailing</em></span>
-			</a>
+		<!-- ============ NAV ============ -->
+		<header class="nav" id="siteNav">
+			<div class="nav-inner">
+				<a href="#hero" class="nav-logo">
+					<img
+						src="media/logo-panda.png"
+						alt="Logo Panda Detailing"
+						class="nav-logo-img"
+					/>
+					<span class="nav-logo-text">Panda<em>Detailing</em></span>
+				</a>
 
-			<nav class="nav-links" id="navLinks">
-				<a href="#onas" class="nav-link"><span>01</span>O nas</a>
-				<a href="#uslugi" class="nav-link"><span>02</span>Usługi</a>
-				<a href="#proces" class="nav-link"><span>03</span>Jak pracujemy</a>
-				<a href="#realizacje" class="nav-link"><span>04</span>Realizacje</a>
-				<a href="#cennik" class="nav-link"><span>05</span>Cennik</a>
-				<a href="#kontakt" class="nav-link"><span>06</span>Kontakt</a>
-			</nav>
+				<nav class="nav-links" id="navLinks">
+					<a href="#onas" class="nav-link"><span>01</span>O nas</a>
+					<a href="#uslugi" class="nav-link"><span>02</span>Usługi</a>
+					<a href="#proces" class="nav-link"
+						><span>03</span>Jak pracujemy</a
+					>
+					<a href="#realizacje" class="nav-link"
+						><span>04</span>Realizacje</a
+					>
+					<a href="#cennik" class="nav-link"><span>05</span>Cennik</a>
+					<a href="#kontakt" class="nav-link"
+						><span>06</span>Kontakt</a
+					>
+				</nav>
 
-			<a href="#kontakt" class="nav-cta">Zarezerwuj termin</a>
+				<a href="#kontakt" class="nav-cta">Zarezerwuj termin</a>
 
-			<button class="nav-burger" id="navBurger" aria-label="Otwórz menu" aria-expanded="false">
-				<span></span><span></span><span></span>
+				<button
+					class="nav-burger"
+					id="navBurger"
+					aria-label="Otwórz menu"
+					aria-expanded="false"
+				>
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+
+			<!-- mobile drawer -->
+			<div class="nav-drawer" id="navDrawer">
+				<nav class="nav-drawer-links">
+					<a href="#onas" class="nav-drawer-link"
+						><span>01</span>O nas</a
+					>
+					<a href="#uslugi" class="nav-drawer-link"
+						><span>02</span>Usługi</a
+					>
+					<a href="#proces" class="nav-drawer-link"
+						><span>03</span>Jak pracujemy</a
+					>
+					<a href="#realizacje" class="nav-drawer-link"
+						><span>04</span>Realizacje</a
+					>
+					<a href="#cennik" class="nav-drawer-link"
+						><span>05</span>Cennik</a
+					>
+					<a href="#kontakt" class="nav-drawer-link"
+						><span>06</span>Kontakt</a
+					>
+				</nav>
+				<a href="#kontakt" class="nav-drawer-cta">Zarezerwuj termin</a>
+				<div class="nav-drawer-socials">
+					<a
+						href="https://www.facebook.com/PandaDetailingTorun"
+						target="_blank"
+						rel="noopener"
+						>Facebook</a
+					>
+					<a
+						href="https://www.instagram.com/panda_detailing_torun"
+						target="_blank"
+						rel="noopener"
+						>Instagram</a
+					>
+				</div>
+			</div>
+		</header>
+		<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+		<main>
+			<!-- ============ HERO ============ -->
+			<section class="hero" id="hero">
+				<div class="hero-bg">
+					<img
+						src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=1600&q=85"
+						alt="Detailing wnętrza samochodu"
+						class="hero-img hero-img--main"
+					/>
+					<div class="hero-noise"></div>
+					<div class="hero-vignette"></div>
+				</div>
+
+				<div class="hero-content">
+					<p class="hero-eyebrow">Panda Auto Detailing · Toruń</p>
+					<h1 class="hero-title">
+						Pozwól nam<br />
+						zatroszczyć się<br />
+						o <span class="hero-title-accent">twoje auto</span>.
+					</h1>
+					<p class="hero-sub">
+						Indywidualne podejście do każdego pojazdu. Staranność,
+						cierpliwość i kosmetyki najwyższej jakości — od
+						kompleksowego czyszczenia wnętrza po powłoki ceramiczne
+						i folie PPF.
+					</p>
+					<div class="hero-actions">
+						<a href="#kontakt" class="btn btn--primary"
+							>Zarezerwuj termin</a
+						>
+						<a href="#uslugi" class="btn btn--ghost"
+							>Zobacz usługi</a
+						>
+					</div>
+				</div>
+
+				<div class="hero-scroll-hint">
+					<span>przewiń</span>
+					<div class="hero-scroll-line"><i></i></div>
+				</div>
+			</section>
+
+			<!-- ============ STATS / COUNTER ============ -->
+			<section class="stats" id="stats">
+				<div class="stats-inner">
+					<div class="stat" data-stat>
+						<p class="stat-label">Dbamy o samochody od</p>
+						<p class="stat-value">
+							<span class="stat-number" data-count-to="5">0</span
+							><span class="stat-suffix"> lat</span>
+						</p>
+					</div>
+
+					<div class="stat-divider" aria-hidden="true"></div>
+
+					<div class="stat" data-stat>
+						<p class="stat-label">Zadowolonych z naszej pracy</p>
+						<p class="stat-value">
+							<span class="stat-number" data-count-to="200"
+								>0</span
+							><span class="stat-suffix">+ klientów</span>
+						</p>
+					</div>
+
+					<div class="stat-divider" aria-hidden="true"></div>
+
+					<div class="stat stat--scramble" data-stat>
+						<p class="stat-label">Aktualnie w oczekiwaniu na</p>
+						<p class="stat-value stat-value--scramble">
+							<span class="scramble-text" id="scrambleText"
+								>&nbsp;</span
+							><span class="scramble-cursor">_</span>
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ O NAS ============ -->
+			<section class="about" id="onas">
+				<div class="about-inner">
+					<div class="about-media">
+						<img
+							src="media/audi_a5.JPG"
+							alt="Czyszczenie tapicerki samochodowej"
+							class="about-img"
+						/>
+						<div class="about-media-tag">
+							<span class="about-media-tag-num">100%</span>
+							<span class="about-media-tag-label"
+								>gwarantowanej satysfakcji z efektu</span
+							>
+						</div>
+					</div>
+
+					<div class="about-content">
+						<p class="eyebrow"><span>01</span> O nas</p>
+						<h2 class="section-title">
+							Kim jesteśmy<br />i co robimy.
+						</h2>
+						<p class="about-text">
+							Panda Auto Detailing Toruń to marka prowadzona z
+							pasją do motoryzacji, gdzie każdy samochód obsługuję
+							osobiście. Łączę staranność z indywidualnym
+							podejściem, dbając o każdy detal i zapewniając
+							najwyższą jakość usług.
+						</p>
+						<p class="about-text">
+							Każde auto to unikalna sprawa — moja praca polega na
+							wydobywaniu z jego wyglądu pełni potencjału.
+						</p>
+
+						<div class="about-points">
+							<div class="about-point">
+								<span class="about-point-icon">
+									<svg
+										width="22"
+										height="22"
+										viewBox="0 0 24 24"
+										fill="none"
+									>
+										<path
+											d="M4 12.5L9.5 18L20 6"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span
+									>Podejście indywidualne — pełna kontrola nad
+									każdym etapem</span
+								>
+							</div>
+							<div class="about-point">
+								<span class="about-point-icon">
+									<svg
+										width="22"
+										height="22"
+										viewBox="0 0 24 24"
+										fill="none"
+									>
+										<path
+											d="M4 12.5L9.5 18L20 6"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span>Kosmetyki najwyższej jakości</span>
+							</div>
+							<div class="about-point">
+								<span class="about-point-icon">
+									<svg
+										width="22"
+										height="22"
+										viewBox="0 0 24 24"
+										fill="none"
+									>
+										<path
+											d="M4 12.5L9.5 18L20 6"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span>Duże doświadczenie i ogrom pasji</span>
+							</div>
+						</div>
+
+						<a href="#kontakt" class="link-arrow"
+							>Umów konsultację
+							<svg
+								width="16"
+								height="16"
+								viewBox="0 0 16 16"
+								fill="none"
+							>
+								<path
+									d="M3 8H13M13 8L9 4M13 8L9 12"
+									stroke="currentColor"
+									stroke-width="1.6"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ MARQUEE DIVIDER ============ -->
+			<div class="marquee" aria-hidden="true">
+				<div class="marquee-track">
+					<div class="marquee-group">
+						<span>DETAILING WNĘTRZA</span
+						><span class="marquee-dot">●</span>
+						<span>POWŁOKI CERAMICZNE</span
+						><span class="marquee-dot">●</span>
+						<span>KOREKTA LAKIERU</span
+						><span class="marquee-dot">●</span>
+						<span>FOLIE PPF</span><span class="marquee-dot">●</span>
+						<span>PRZYCIEMNIANIE SZYB</span
+						><span class="marquee-dot">●</span>
+					</div>
+					<div class="marquee-group" aria-hidden="true">
+						<span>DETAILING WNĘTRZA</span
+						><span class="marquee-dot">●</span>
+						<span>POWŁOKI CERAMICZNE</span
+						><span class="marquee-dot">●</span>
+						<span>KOREKTA LAKIERU</span
+						><span class="marquee-dot">●</span>
+						<span>FOLIE PPF</span><span class="marquee-dot">●</span>
+						<span>PRZYCIEMNIANIE SZYB</span
+						><span class="marquee-dot">●</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- ============ USŁUGI ============ -->
+			<section class="services" id="uslugi">
+				<div class="services-head">
+					<p class="eyebrow"><span>02</span> Usługi</p>
+					<h2 class="section-title">
+						Pełen zakres<br />usług detailingowych.
+					</h2>
+					<p class="services-sub">
+						Od podstawowego odświeżenia po pełną metamorfozę pojazdu
+						— wybierz zakres dopasowany do Twojego auta.
+					</p>
+				</div>
+
+				<div class="services-grid">
+					<article class="service-card service-card--lg">
+						<div class="service-card-top">
+							<span class="service-num">01</span>
+							<svg
+								class="service-icon"
+								width="30"
+								height="30"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M4 17V8C4 6.34315 5.34315 5 7 5H17C18.6569 5 20 6.34315 20 8V17"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M2 17H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V17Z"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linejoin="round"
+								/>
+								<circle
+									cx="8"
+									cy="11"
+									r="1.3"
+									fill="currentColor"
+								/>
+								<circle
+									cx="16"
+									cy="11"
+									r="1.3"
+									fill="currentColor"
+								/>
+							</svg>
+						</div>
+						<h3>Detailing wnętrza</h3>
+						<p>
+							Zwykły / Premium — czyszczenie tapicerki
+							materiałowej i skórzanej z dbałością o każdy
+							najmniejszy detal.
+						</p>
+					</article>
+
+					<article class="service-card">
+						<div class="service-card-top">
+							<span class="service-num">02</span>
+							<svg
+								class="service-icon"
+								width="30"
+								height="30"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+								/>
+								<path
+									d="M12 7V12L15 14"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<h3>Detailing zewnętrzny</h3>
+						<p>
+							Zwykły / Premium — głębia koloru, intensywny połysk
+							i skuteczna ochrona lakieru.
+						</p>
+					</article>
+
+					<article class="service-card">
+						<div class="service-card-top">
+							<span class="service-num">03</span>
+							<svg
+								class="service-icon"
+								width="30"
+								height="30"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M12 3L19 6.5V12C19 16.5 16 20 12 21.5C8 20 5 16.5 5 12V6.5L12 3Z"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<h3>Powłoki ochronne</h3>
+						<p>
+							Ceramiczne, kwarcowe, elastomer i woski — trwała
+							ochrona przed UV i zarysowaniami.
+						</p>
+					</article>
+
+					<article class="service-card">
+						<div class="service-card-top">
+							<span class="service-num">04</span>
+							<svg
+								class="service-icon"
+								width="30"
+								height="30"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<rect
+									x="3"
+									y="6"
+									width="18"
+									height="12"
+									rx="2"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M3 10H21"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+							</svg>
+						</div>
+						<h3>Przyciemnianie szyb</h3>
+						<p>
+							Folie do szyb i reflektorów — elegancki wygląd,
+							mniej nagrzewania, mniej UV.
+						</p>
+					</article>
+
+					<article class="service-card">
+						<div class="service-card-top">
+							<span class="service-num">05</span>
+							<svg
+								class="service-icon"
+								width="30"
+								height="30"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M12 2L4 6V12C4 17 7.5 20.7 12 22C16.5 20.7 20 17 20 12V6L12 2Z"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<h3>Folie ochronne PPF</h3>
+						<p>
+							Full body, front lub wybrane elementy — niewidoczna
+							bariera przed odpryskami.
+						</p>
+					</article>
+
+					<article class="service-card">
+						<div class="service-card-top">
+							<span class="service-num">06</span>
+							<svg
+								class="service-icon"
+								width="30"
+								height="30"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<circle
+									cx="12"
+									cy="12"
+									r="9"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<circle
+									cx="12"
+									cy="12"
+									r="3"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+							</svg>
+						</div>
+						<h3>Korekta lakieru</h3>
+						<p>
+							Jedno-, dwu- i wieloetapowa — usuwamy do większości
+							rys, wydobywając pełną głębię.
+						</p>
+					</article>
+				</div>
+
+				<div class="services-more">
+					<p>
+						To nie wszystko — w ofercie znajdziesz też przygotowanie
+						auta do sprzedaży, polerowanie reflektorów,
+						zabezpieczenie szyb i felg, zmianę koloru oraz
+						dechroming.
+					</p>
+					<a href="uslugi.html" class="btn btn--outline"
+						>Zobacz pełną listę usług</a
+					>
+				</div>
+			</section>
+
+			<!-- ============ PROCES ============ -->
+			<section class="process" id="proces">
+				<div class="process-head">
+					<p class="eyebrow eyebrow--light">
+						<span>03</span> Jak pracujemy
+					</p>
+					<h2 class="section-title section-title--light">
+						Cztery etapy<br />do perfekcyjnego efektu.
+					</h2>
+				</div>
+
+				<div class="process-grid">
+					<div class="process-step">
+						<span class="process-step-num">01</span>
+						<h3>Przygotowanie i inspekcja</h3>
+						<p>
+							Każda usługa zaczyna się od dokładnej oceny stanu
+							pojazdu i potrzebnych zabiegów.
+						</p>
+					</div>
+					<div class="process-step">
+						<span class="process-step-num">02</span>
+						<h3>Dokładne czyszczenie</h3>
+						<p>
+							Zanieczyszczenia usuwamy profesjonalnymi środkami,
+							zapewniając doskonały efekt.
+						</p>
+					</div>
+					<div class="process-step">
+						<span class="process-step-num">03</span>
+						<h3>Aplikacja ochrony</h3>
+						<p>
+							Powłoki ochronne i woski aplikujemy starannie, dla
+							maksymalnej trwałości i blasku.
+						</p>
+					</div>
+					<div class="process-step">
+						<span class="process-step-num">04</span>
+						<h3>Finalna inspekcja</h3>
+						<p>
+							Na koniec sprawdzamy każdy detal, by upewnić się, że
+							spełnia nasze standardy.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ REALIZACJE ============ -->
+			<section class="gallery" id="realizacje">
+				<div class="gallery-head">
+					<p class="eyebrow"><span>04</span> Realizacje</p>
+					<h2 class="section-title">
+						Nasze realizacje<br />i efekty.
+					</h2>
+				</div>
+
+				<div class="gallery-grid">
+					<div class="gallery-item gallery-item--tall">
+						<img
+							src="media/mercedes_mat.JPG"
+							alt="Oklejanie ekranów folią matową"
+						/>
+					</div>
+					<div class="gallery-item">
+						<img
+							src="media/mazda_czyszczenie.JPG"
+							alt="Czyszczenie wnętrza samochodu"
+						/>
+					</div>
+					<div class="gallery-item">
+						<img
+							src="media/koleos.JPG"
+							alt="Błyszcząca karoseria po detailingu"
+						/>
+					</div>
+					<div class="gallery-item gallery-item--wide">
+						<img
+							src="media/kia_poziom.JPG"
+							alt="Karoseria po polerowaniu"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ CENNIK ============ -->
+			<section class="pricing" id="cennik">
+				<div class="pricing-inner">
+					<div class="pricing-head">
+						<p class="eyebrow"><span>05</span> Cennik</p>
+						<h2 class="section-title">
+							Przejrzyste ceny<br />bez niespodzianek.
+						</h2>
+						<p class="pricing-sub">
+							Poniższe stawki są punktem wyjścia. Ostateczna wycena
+							zależy od stanu i wielkości pojazdu — zawsze ustalamy ją
+							przed rozpoczęciem pracy.
+						</p>
+					</div>
+
+					<div class="pricing-groups">
+						<!-- ---- 01 detailing ---- -->
+						<article class="price-group">
+							<div class="price-group-head">
+								<span class="price-group-num">01</span>
+								<h3>Detailing zewnętrzny i wewnętrzny</h3>
+							</div>
+
+							<div class="price-table">
+								<div class="price-row price-row--head">
+									<span class="price-name">Usługa</span>
+									<div class="price-vals">
+										<span class="price-val">Małe</span>
+										<span class="price-val">Średnie</span>
+										<span class="price-val">Duże</span>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Kompleksowy detailing wnętrza</span
+									>
+									<div class="price-vals">
+										<span class="price-val" data-size="Małe"
+											>350 zł</span
+										>
+										<span class="price-val" data-size="Średnie"
+											>450 zł</span
+										>
+										<span class="price-val" data-size="Duże"
+											>550 zł</span
+										>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Odkurzanie + podstawowe czyszczenie</span
+									>
+									<div class="price-vals">
+										<span class="price-val" data-size="Małe"
+											>100 zł</span
+										>
+										<span class="price-val" data-size="Średnie"
+											>120 zł</span
+										>
+										<span class="price-val" data-size="Duże"
+											>150 zł</span
+										>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name">Pranie tapicerki</span>
+									<div class="price-vals price-vals--all">
+										<span class="price-val">Od 500 zł</span>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Czyszczenie i impregnacja skór</span
+									>
+									<div class="price-vals price-vals--all">
+										<span class="price-val">Od 350 zł</span>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Mycie detailingowe</span
+									>
+									<div class="price-vals price-vals--all">
+										<span class="price-val">Od 150 zł</span>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Czyszczenie komory silnika</span
+									>
+									<div class="price-vals price-vals--all">
+										<span class="price-val">Od 100 zł</span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<!-- ---- 02 korekta ---- -->
+						<article class="price-group">
+							<div class="price-group-head">
+								<span class="price-group-num">02</span>
+								<h3>Korekta lakieru i usługi dodatkowe</h3>
+							</div>
+
+							<div class="price-table">
+								<div class="price-row price-row--head">
+									<span class="price-name">Usługa</span>
+									<div class="price-vals">
+										<span class="price-val">Małe</span>
+										<span class="price-val">Średnie</span>
+										<span class="price-val">Duże</span>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Polerowanie reflektorów</span
+									>
+									<div class="price-vals price-vals--all">
+										<span class="price-val">Od 250 zł</span>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Korekta jednoetapowa</span
+									>
+									<div class="price-vals">
+										<span class="price-val" data-size="Małe"
+											>600 zł</span
+										>
+										<span class="price-val" data-size="Średnie"
+											>700 zł</span
+										>
+										<span class="price-val" data-size="Duże"
+											>800 zł</span
+										>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Korekta dwuetapowa</span
+									>
+									<div class="price-vals">
+										<span class="price-val" data-size="Małe"
+											>1000 zł</span
+										>
+										<span class="price-val" data-size="Średnie"
+											>1100 zł</span
+										>
+										<span class="price-val" data-size="Duże"
+											>1200 zł</span
+										>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Korekta wieloetapowa</span
+									>
+									<div class="price-vals">
+										<span class="price-val" data-size="Małe"
+											>1600 zł</span
+										>
+										<span class="price-val" data-size="Średnie"
+											>1800 zł</span
+										>
+										<span class="price-val" data-size="Duże"
+											>2000 zł</span
+										>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Przyciemnianie szyb</span
+									>
+									<div class="price-vals price-vals--all">
+										<span class="price-val">Od 500 zł</span>
+									</div>
+								</div>
+
+								<div class="price-row">
+									<span class="price-name"
+										>Przygotowanie auta do sprzedaży</span
+									>
+									<div class="price-vals price-vals--all">
+										<span class="price-val">Od 500 zł</span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<!-- ---- 03 folie ---- -->
+						<article class="price-group price-group--wide">
+							<div class="price-group-head">
+								<span class="price-group-num">03</span>
+								<h3>Folie ochronne i stylizacja</h3>
+								<p class="price-group-note">
+									PPF, oklejanie, zmiany wizualne
+								</p>
+							</div>
+
+							<div class="price-table price-table--flat">
+								<div class="price-row">
+									<span class="price-name">Full body</span>
+									<div class="price-vals">
+										<span class="price-val">Od 12 000 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name">Full front PPF</span>
+									<div class="price-vals">
+										<span class="price-val">Od 5000 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name">Zmiana koloru</span>
+									<div class="price-vals">
+										<span class="price-val">Od 6000 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name">Dechroming</span>
+									<div class="price-vals">
+										<span class="price-val">Od 450 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name"
+										>Reflektory przednie / tylne</span
+									>
+									<div class="price-vals">
+										<span class="price-val">Od 400 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name"
+										>Przyciemnianie reflektorów kpl.</span
+									>
+									<div class="price-vals">
+										<span class="price-val">Od 400 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name">Lusterka</span>
+									<div class="price-vals">
+										<span class="price-val">Od 250 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name"
+										>Wnęki klamek / próg załadunkowy</span
+									>
+									<div class="price-vals">
+										<span class="price-val">200 / 300 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name"
+										>Ekran (matowa folia)</span
+									>
+									<div class="price-vals">
+										<span class="price-val">Od 200 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name"
+										>Oklejanie elementów wnętrza</span
+									>
+									<div class="price-vals">
+										<span class="price-val">Od 200 zł</span>
+									</div>
+								</div>
+								<div class="price-row">
+									<span class="price-name"
+										>Stylizacje foliami (pasy, dach)</span
+									>
+									<div class="price-vals">
+										<span class="price-val price-val--custom"
+											>wycena indywidualna</span
+										>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<div class="pricing-foot">
+						<p class="pricing-note">
+							<span class="pricing-note-mark">!</span>
+							Każda usługa wyceniana jest indywidualnie. Podane ceny
+							mają charakter poglądowy i zależą od stanu oraz
+							wielkości pojazdu.
+						</p>
+						<a href="#kontakt" class="btn btn--primary"
+							>Poproś o wycenę</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ KONTAKT ============ -->
+			<section class="contact" id="kontakt">
+				<div class="contact-top">
+					<div class="contact-head">
+						<p class="eyebrow"><span>06</span> Kontakt</p>
+						<h2 class="section-title">
+							Skontaktuj się<br />z nami już dziś.
+						</h2>
+						<p class="contact-sub">
+							Nie odkładaj na później — zarezerwuj wizytę i
+							przywróć blask swojemu samochodowi.
+						</p>
+					</div>
+					<div class="contact-map">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2400.8179104980095!2d18.559826776950914!3d53.00565840015969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703355af9a1da2d%3A0xd82cd0346631f0d5!2sPanda%20Auto%20Detailing%20Toru%C5%84!5e0!3m2!1spl!2spl!4v1784726685634!5m2!1spl!2spl"
+							width="600"
+							height="450"
+							style="border: 0"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="strict-origin-when-cross-origin"
+						></iframe>
+					</div>
+				</div>
+
+				<div class="contact-grid">
+					<a href="tel:+48736100977" class="contact-card">
+						<div class="contact-card-icon">
+							<svg
+								width="26"
+								height="26"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M5 4H9L11 9L8.5 10.5C9.5 12.5 11.5 14.5 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C10.3 21 4 14.7 4 7C4 5.9 4.9 4 5 4Z"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<p class="contact-card-label">Telefon</p>
+						<p class="contact-card-value">+48 736 100 977</p>
+					</a>
+
+					<a
+						href="mailto:padetailingtorun@gmail.com"
+						class="contact-card"
+					>
+						<div class="contact-card-icon">
+							<svg
+								width="26"
+								height="26"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<rect
+									x="3"
+									y="5"
+									width="18"
+									height="14"
+									rx="2"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M3 7L12 13L21 7"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<p class="contact-card-label">Email</p>
+						<p class="contact-card-value">
+							padetailingtorun@gmail.com
+						</p>
+					</a>
+
+					<a
+						href="https://www.google.com/maps/search/?api=1&query=Stanis%C5%82awa+Przybyszewskiego+6%2C+87-100+Toru%C5%84"
+						target="_blank"
+						rel="noopener"
+						class="contact-card"
+					>
+						<div class="contact-card-icon">
+							<svg
+								width="26"
+								height="26"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M12 21C12 21 19 14.5 19 9.5C19 5.6 15.9 2.5 12 2.5C8.1 2.5 5 5.6 5 9.5C5 14.5 12 21 12 21Z"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linejoin="round"
+								/>
+								<circle
+									cx="12"
+									cy="9.5"
+									r="2.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+							</svg>
+						</div>
+						<p class="contact-card-label">Adres</p>
+						<p class="contact-card-value">
+							Stanisława Przybyszewskiego 6, 87-100 Toruń
+						</p>
+					</a>
+
+					<a href="#kontakt" class="contact-card contact-card--cta">
+						<div
+							class="contact-card-icon contact-card-icon--accent"
+						>
+							<svg
+								width="26"
+								height="26"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M5 12H19M19 12L13 6M19 12L13 18"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<p class="contact-card-label">Rezerwacja</p>
+						<p class="contact-card-value">
+							Zadzwoń lub napisz, by ustalić termin
+						</p>
+					</a>
+				</div>
+			</section>
+		</main>
+
+		<!-- ============ STOPKA ============ -->
+		<footer class="footer">
+			<div class="footer-inner">
+				<div class="footer-col footer-col--brand">
+					<div class="footer-logo">
+						<img
+							src="media/logo-panda.png"
+							alt="Logo Panda Detailing"
+							class="footer-logo-img"
+						/>
+						<span class="footer-logo-text"
+							>Panda<em>Detailing</em></span
+						>
+					</div>
+					<p class="footer-tagline">
+						Panda Auto Detailing Toruń Adrian Lewiński
+					</p>
+					<div class="footer-socials">
+						<a
+							href="https://www.facebook.com/PandaDetailingTorun"
+							target="_blank"
+							rel="noopener"
+							aria-label="Facebook"
+							class="footer-social"
+						>
+							<svg
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M14 9H17V5.5C16.7 5.45 15.6 5.3 14.3 5.3C11.6 5.3 9.8 7 9.8 9.9V12.5H7V16.3H9.8V24H13.7V16.3H16.4L16.9 12.5H13.7V10.3C13.7 9.5 13.9 9 14 9Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</a>
+						<a
+							href="https://www.instagram.com/panda_detailing_torun"
+							target="_blank"
+							rel="noopener"
+							aria-label="Instagram"
+							class="footer-social"
+						>
+							<svg
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<rect
+									x="3"
+									y="3"
+									width="18"
+									height="18"
+									rx="5"
+									stroke="currentColor"
+									stroke-width="1.6"
+								/>
+								<circle
+									cx="12"
+									cy="12"
+									r="4.2"
+									stroke="currentColor"
+									stroke-width="1.6"
+								/>
+								<circle
+									cx="17.3"
+									cy="6.7"
+									r="1.1"
+									fill="currentColor"
+								/>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<div class="footer-col footer-col--contact">
+					<p class="footer-col-title">Kontakt</p>
+					<a href="tel:+48736100977" class="footer-line"
+						>+48 736 100 977</a
+					>
+					<a
+						href="mailto:padetailingtorun@gmail.com"
+						class="footer-line"
+						>padetailingtorun@gmail.com</a
+					>
+					<p class="footer-line footer-line--muted">
+						Stanisława Przybyszewskiego 6<br />87-100 Toruń
+					</p>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<p>
+					© 2026 Panda Auto Detailing Toruń. Wszelkie prawa
+					zastrzeżone.
+				</p>
+				<a href="#hero" class="footer-top">Do góry ↑</a>
+			</div>
+		</footer>
+
+		<!-- ============ FAB MENU ============ -->
+		<div class="fab-wrapper" id="fabWrapper">
+			<div class="fab-menu" id="fabMenu">
+				<a
+					href="tel:+48736100977"
+					class="fab-menu-item"
+					aria-label="Zadzwoń"
+					title="Zadzwoń"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="20"
+						height="20"
+					>
+						<path
+							d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+						></path>
+					</svg>
+				</a>
+				<a
+					href="sms:+48736100977"
+					class="fab-menu-item"
+					aria-label="Wyślij SMS"
+					title="Wyślij SMS"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="20"
+						height="20"
+					>
+						<path
+							d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+						></path>
+					</svg>
+				</a>
+				<a
+					href="mailto:padetailingtorun@gmail.com"
+					class="fab-menu-item"
+					aria-label="Wyślij Email"
+					title="Wyślij Email"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="20"
+						height="20"
+					>
+						<path
+							d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+						></path>
+						<polyline points="22,6 12,13 2,6"></polyline>
+					</svg>
+				</a>
+				<a
+					href="https://www.instagram.com/panda_detailing_torun"
+					target="_blank"
+					rel="noopener"
+					class="fab-menu-item"
+					aria-label="Instagram"
+					title="Instagram"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="20"
+						height="20"
+					>
+						<rect
+							x="2"
+							y="2"
+							width="20"
+							height="20"
+							rx="5"
+							ry="5"
+						></rect>
+						<path
+							d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+						></path>
+						<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+					</svg>
+				</a>
+				<a
+					href="https://www.facebook.com/PandaDetailingTorun"
+					target="_blank"
+					rel="noopener"
+					class="fab-menu-item"
+					aria-label="Facebook"
+					title="Facebook"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="20"
+						height="20"
+					>
+						<path
+							d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+						></path>
+					</svg>
+				</a>
+			</div>
+			<button class="fab-btn" id="fabBtn" aria-label="Kontakt">
+				<div class="fab-btn-icons">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="20"
+						height="20"
+					>
+						<path
+							d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+						></path>
+					</svg>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="20"
+						height="20"
+					>
+						<path
+							d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+						></path>
+						<polyline points="22,6 12,13 2,6"></polyline>
+					</svg>
+				</div>
+				<div class="fab-btn-close">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						width="24"
+						height="24"
+					>
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</div>
 			</button>
 		</div>
 
-		<!-- mobile drawer -->
-		<div class="nav-drawer" id="navDrawer">
-			<nav class="nav-drawer-links">
-				<a href="#onas" class="nav-drawer-link"><span>01</span>O nas</a>
-				<a href="#uslugi" class="nav-drawer-link"><span>02</span>Usługi</a>
-				<a href="#proces" class="nav-drawer-link"><span>03</span>Jak pracujemy</a>
-				<a href="#realizacje" class="nav-drawer-link"><span>04</span>Realizacje</a>
-				<a href="#cennik" class="nav-drawer-link"><span>05</span>Cennik</a>
-				<a href="#kontakt" class="nav-drawer-link"><span>06</span>Kontakt</a>
-			</nav>
-			<a href="#kontakt" class="nav-drawer-cta">Zarezerwuj termin</a>
-			<div class="nav-drawer-socials">
-				<a href="https://www.facebook.com/PandaDetailingTorun" target="_blank" rel="noopener">Facebook</a>
-				<a href="https://www.instagram.com/panda_detailing_torun" target="_blank" rel="noopener">Instagram</a>
-			</div>
-		</div>
-	</header>
-	<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
-
-	<main>
-		<!-- ============ HERO ============ -->
-		<section class="hero" id="hero">
-			<div class="hero-bg">
-				<img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=1600&q=85"
-					alt="Detailing wnętrza samochodu" class="hero-img hero-img--main" />
-				<div class="hero-noise"></div>
-				<div class="hero-vignette"></div>
-			</div>
-
-			<div class="hero-content">
-				<p class="hero-eyebrow">Panda Auto Detailing · Toruń</p>
-				<h1 class="hero-title">
-					Pozwól nam<br />
-					zatroszczyć się<br />
-					o <span class="hero-title-accent">twoje auto</span>.
-				</h1>
-				<p class="hero-sub">
-					Indywidualne podejście do każdego pojazdu. Staranność,
-					cierpliwość i kosmetyki najwyższej jakości — od
-					kompleksowego czyszczenia wnętrza po powłoki ceramiczne
-					i folie PPF.
-				</p>
-				<div class="hero-actions">
-					<a href="#kontakt" class="btn btn--primary">Zarezerwuj termin</a>
-					<a href="#uslugi" class="btn btn--ghost">Zobacz usługi</a>
-				</div>
-			</div>
-
-			<div class="hero-scroll-hint">
-				<span>przewiń</span>
-				<div class="hero-scroll-line"><i></i></div>
-			</div>
-		</section>
-
-		<!-- ============ STATS / COUNTER ============ -->
-		<section class="stats" id="stats">
-			<div class="stats-inner">
-				<div class="stat" data-stat>
-					<p class="stat-label">Dbamy o samochody od</p>
-					<p class="stat-value">
-						<span class="stat-number" data-count-to="5">0</span><span class="stat-suffix"> lat</span>
-					</p>
-				</div>
-
-				<div class="stat-divider" aria-hidden="true"></div>
-
-				<div class="stat" data-stat>
-					<p class="stat-label">Zadowolonych z naszej pracy</p>
-					<p class="stat-value">
-						<span class="stat-number" data-count-to="200">0</span><span class="stat-suffix">+
-							klientów</span>
-					</p>
-				</div>
-
-				<div class="stat-divider" aria-hidden="true"></div>
-
-				<div class="stat stat--scramble" data-stat>
-					<p class="stat-label">Aktualnie w oczekiwaniu na</p>
-					<p class="stat-value stat-value--scramble">
-						<span class="scramble-text" id="scrambleText">&nbsp;</span><span
-							class="scramble-cursor">_</span>
-					</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- ============ O NAS ============ -->
-		<section class="about" id="onas">
-			<div class="about-inner">
-				<div class="about-media">
-					<img src="media/audi_a5.JPG" alt="Czyszczenie tapicerki samochodowej" class="about-img" />
-					<div class="about-media-tag">
-						<span class="about-media-tag-num">100%</span>
-						<span class="about-media-tag-label">gwarantowanej satysfakcji z efektu</span>
-					</div>
-				</div>
-
-				<div class="about-content">
-					<p class="eyebrow"><span>01</span> O nas</p>
-					<h2 class="section-title">
-						Kim jesteśmy<br />i co robimy.
-					</h2>
-					<p class="about-text">
-						Panda Auto Detailing Toruń to marka prowadzona z
-						pasją do motoryzacji, gdzie każdy samochód obsługuję
-						osobiście. Łączę staranność z indywidualnym
-						podejściem, dbając o każdy detal i zapewniając
-						najwyższą jakość usług.
-					</p>
-					<p class="about-text">
-						Każde auto to unikalna sprawa — moja praca polega na
-						wydobywaniu z jego wyglądu pełni potencjału.
-					</p>
-
-					<div class="about-points">
-						<div class="about-point">
-							<span class="about-point-icon">
-								<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-									<path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2"
-										stroke-linecap="round" stroke-linejoin="round" />
-								</svg>
-							</span>
-							<span>Podejście indywidualne — pełna kontrola nad
-								każdym etapem</span>
-						</div>
-						<div class="about-point">
-							<span class="about-point-icon">
-								<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-									<path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2"
-										stroke-linecap="round" stroke-linejoin="round" />
-								</svg>
-							</span>
-							<span>Kosmetyki najwyższej jakości</span>
-						</div>
-						<div class="about-point">
-							<span class="about-point-icon">
-								<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-									<path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2"
-										stroke-linecap="round" stroke-linejoin="round" />
-								</svg>
-							</span>
-							<span>Duże doświadczenie i ogrom pasji</span>
-						</div>
-					</div>
-
-					<a href="#kontakt" class="link-arrow">Umów konsultację
-						<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-							<path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</a>
-				</div>
-			</div>
-		</section>
-
-		<!-- ============ MARQUEE DIVIDER ============ -->
-		<div class="marquee" aria-hidden="true">
-			<div class="marquee-track">
-				<div class="marquee-group">
-					<span>DETAILING WNĘTRZA</span><span class="marquee-dot">●</span>
-					<span>POWŁOKI CERAMICZNE</span><span class="marquee-dot">●</span>
-					<span>KOREKTA LAKIERU</span><span class="marquee-dot">●</span>
-					<span>FOLIE PPF</span><span class="marquee-dot">●</span>
-					<span>PRZYCIEMNIANIE SZYB</span><span class="marquee-dot">●</span>
-				</div>
-				<div class="marquee-group" aria-hidden="true">
-					<span>DETAILING WNĘTRZA</span><span class="marquee-dot">●</span>
-					<span>POWŁOKI CERAMICZNE</span><span class="marquee-dot">●</span>
-					<span>KOREKTA LAKIERU</span><span class="marquee-dot">●</span>
-					<span>FOLIE PPF</span><span class="marquee-dot">●</span>
-					<span>PRZYCIEMNIANIE SZYB</span><span class="marquee-dot">●</span>
-				</div>
-			</div>
-		</div>
-
-		<!-- ============ USŁUGI ============ -->
-		<section class="services" id="uslugi">
-			<div class="services-head">
-				<p class="eyebrow"><span>02</span> Usługi</p>
-				<h2 class="section-title">
-					Pełen zakres<br />usług detailingowych.
-				</h2>
-				<p class="services-sub">
-					Od podstawowego odświeżenia po pełną metamorfozę pojazdu
-					— wybierz zakres dopasowany do Twojego auta.
-				</p>
-			</div>
-
-			<div class="services-grid">
-				<article class="service-card service-card--lg">
-					<div class="service-card-top">
-						<span class="service-num">01</span>
-						<svg class="service-icon" width="30" height="30" viewBox="0 0 24 24" fill="none">
-							<path d="M4 17V8C4 6.34315 5.34315 5 7 5H17C18.6569 5 20 6.34315 20 8V17"
-								stroke="currentColor" stroke-width="1.5" />
-							<path d="M2 17H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V17Z"
-								stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-							<circle cx="8" cy="11" r="1.3" fill="currentColor" />
-							<circle cx="16" cy="11" r="1.3" fill="currentColor" />
-						</svg>
-					</div>
-					<h3>Detailing wnętrza</h3>
-					<p>
-						Zwykły / Premium — czyszczenie tapicerki
-						materiałowej i skórzanej z dbałością o każdy
-						najmniejszy detal.
-					</p>
-				</article>
-
-				<article class="service-card">
-					<div class="service-card-top">
-						<span class="service-num">02</span>
-						<svg class="service-icon" width="30" height="30" viewBox="0 0 24 24" fill="none">
-							<path
-								d="M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"
-								stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-							<path d="M12 7V12L15 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-								stroke-linejoin="round" />
-						</svg>
-					</div>
-					<h3>Detailing zewnętrzny</h3>
-					<p>
-						Zwykły / Premium — głębia koloru, intensywny połysk
-						i skuteczna ochrona lakieru.
-					</p>
-				</article>
-
-				<article class="service-card">
-					<div class="service-card-top">
-						<span class="service-num">03</span>
-						<svg class="service-icon" width="30" height="30" viewBox="0 0 24 24" fill="none">
-							<path d="M12 3L19 6.5V12C19 16.5 16 20 12 21.5C8 20 5 16.5 5 12V6.5L12 3Z"
-								stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-						</svg>
-					</div>
-					<h3>Powłoki ochronne</h3>
-					<p>
-						Ceramiczne, kwarcowe, elastomer i woski — trwała
-						ochrona przed UV i zarysowaniami.
-					</p>
-				</article>
-
-				<article class="service-card">
-					<div class="service-card-top">
-						<span class="service-num">04</span>
-						<svg class="service-icon" width="30" height="30" viewBox="0 0 24 24" fill="none">
-							<rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" />
-							<path d="M3 10H21" stroke="currentColor" stroke-width="1.5" />
-						</svg>
-					</div>
-					<h3>Przyciemnianie szyb</h3>
-					<p>
-						Folie do szyb i reflektorów — elegancki wygląd,
-						mniej nagrzewania, mniej UV.
-					</p>
-				</article>
-
-				<article class="service-card">
-					<div class="service-card-top">
-						<span class="service-num">05</span>
-						<svg class="service-icon" width="30" height="30" viewBox="0 0 24 24" fill="none">
-							<path d="M12 2L4 6V12C4 17 7.5 20.7 12 22C16.5 20.7 20 17 20 12V6L12 2Z"
-								stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-						</svg>
-					</div>
-					<h3>Folie ochronne PPF</h3>
-					<p>
-						Full body, front lub wybrane elementy — niewidoczna
-						bariera przed odpryskami.
-					</p>
-				</article>
-
-				<article class="service-card">
-					<div class="service-card-top">
-						<span class="service-num">06</span>
-						<svg class="service-icon" width="30" height="30" viewBox="0 0 24 24" fill="none">
-							<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-							<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
-						</svg>
-					</div>
-					<h3>Korekta lakieru</h3>
-					<p>
-						Jedno-, dwu- i wieloetapowa — usuwamy do większości
-						rys, wydobywając pełną głębię.
-					</p>
-				</article>
-			</div>
-
-			<div class="services-more">
-				<p>
-					To nie wszystko — w ofercie znajdziesz też przygotowanie
-					auta do sprzedaży, polerowanie reflektorów,
-					zabezpieczenie szyb i felg, zmianę koloru oraz
-					dechroming.
-				</p>
-				<a href="uslugi.html" class="btn btn--outline">Zobacz pełną listę usług</a>
-			</div>
-		</section>
-
-		<!-- ============ PROCES ============ -->
-		<section class="process" id="proces">
-			<div class="process-head">
-				<p class="eyebrow eyebrow--light">
-					<span>03</span> Jak pracujemy
-				</p>
-				<h2 class="section-title section-title--light">
-					Cztery etapy<br />do perfekcyjnego efektu.
-				</h2>
-			</div>
-
-			<div class="process-grid">
-				<div class="process-step">
-					<span class="process-step-num">01</span>
-					<h3>Przygotowanie i inspekcja</h3>
-					<p>
-						Każda usługa zaczyna się od dokładnej oceny stanu
-						pojazdu i potrzebnych zabiegów.
-					</p>
-				</div>
-				<div class="process-step">
-					<span class="process-step-num">02</span>
-					<h3>Dokładne czyszczenie</h3>
-					<p>
-						Zanieczyszczenia usuwamy profesjonalnymi środkami,
-						zapewniając doskonały efekt.
-					</p>
-				</div>
-				<div class="process-step">
-					<span class="process-step-num">03</span>
-					<h3>Aplikacja ochrony</h3>
-					<p>
-						Powłoki ochronne i woski aplikujemy starannie, dla
-						maksymalnej trwałości i blasku.
-					</p>
-				</div>
-				<div class="process-step">
-					<span class="process-step-num">04</span>
-					<h3>Finalna inspekcja</h3>
-					<p>
-						Na koniec sprawdzamy każdy detal, by upewnić się, że
-						spełnia nasze standardy.
-					</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- ============ REALIZACJE ============ -->
-		<section class="gallery" id="realizacje">
-			<div class="gallery-head">
-				<p class="eyebrow"><span>04</span> Realizacje</p>
-				<h2 class="section-title">
-					Nasze realizacje<br />i efekty.
-				</h2>
-			</div>
-
-			<div class="gallery-grid">
-				<div class="gallery-item gallery-item--tall">
-					<img src="media/mercedes_mat.JPG" alt="Oklejanie ekranów folią matową" />
-				</div>
-				<div class="gallery-item">
-					<img src="media/mazda_czyszczenie.JPG" alt="Czyszczenie wnętrza samochodu" />
-				</div>
-				<div class="gallery-item">
-					<img src="media/koleos.JPG" alt="Błyszcząca karoseria po detailingu" />
-				</div>
-				<div class="gallery-item gallery-item--wide">
-					<img src="media/kia_poziom.JPG" alt="Karoseria po polerowaniu" />
-				</div>
-			</div>
-		</section>
-
-		<!-- ============ CENNIK ============ -->
-		<section class="pricing-placeholder" id="cennik">
-			<h2>Tu przybędzie cennik. niedługo...</h2>
-		</section>
-
-		<!-- ============ KONTAKT ============ -->
-		<section class="contact" id="kontakt">
-			<div class="contact-head">
-				<p class="eyebrow"><span>05</span> Kontakt</p>
-				<h2 class="section-title">
-					Skontaktuj się<br />z nami już dziś.
-				</h2>
-				<p class="contact-sub">
-					Nie odkładaj na później — zarezerwuj wizytę i przywróć
-					blask swojemu samochodowi.
-				</p>
-			</div>
-
-			<div class="contact-grid">
-				<a href="tel:+48736100977" class="contact-card">
-					<div class="contact-card-icon">
-						<svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-							<path
-								d="M5 4H9L11 9L8.5 10.5C9.5 12.5 11.5 14.5 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C10.3 21 4 14.7 4 7C4 5.9 4.9 4 5 4Z"
-								stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-						</svg>
-					</div>
-					<p class="contact-card-label">Telefon</p>
-					<p class="contact-card-value">+48 736 100 977</p>
-				</a>
-
-				<a href="mailto:padetailingtorun@gmail.com" class="contact-card">
-					<div class="contact-card-icon">
-						<svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-							<rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
-							<path d="M3 7L12 13L21 7" stroke="currentColor" stroke-width="1.5"
-								stroke-linejoin="round" />
-						</svg>
-					</div>
-					<p class="contact-card-label">Email</p>
-					<p class="contact-card-value">
-						padetailingtorun@gmail.com
-					</p>
-				</a>
-
-				<a href="https://www.google.com/maps/search/?api=1&query=Stanis%C5%82awa+Przybyszewskiego+6%2C+87-100+Toru%C5%84"
-					target="_blank" rel="noopener" class="contact-card">
-					<div class="contact-card-icon">
-						<svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-							<path
-								d="M12 21C12 21 19 14.5 19 9.5C19 5.6 15.9 2.5 12 2.5C8.1 2.5 5 5.6 5 9.5C5 14.5 12 21 12 21Z"
-								stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-							<circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.5" />
-						</svg>
-					</div>
-					<p class="contact-card-label">Adres</p>
-					<p class="contact-card-value">
-						Stanisława Przybyszewskiego 6, 87-100 Toruń
-					</p>
-				</a>
-
-				<a href="#kontakt" class="contact-card contact-card--cta">
-					<div class="contact-card-icon contact-card-icon--accent">
-						<svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-							<path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.8"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</div>
-					<p class="contact-card-label">Rezerwacja</p>
-					<p class="contact-card-value">
-						Zadzwoń lub napisz, by ustalić termin
-					</p>
-				</a>
-			</div>
-		</section>
-	</main>
-
-	<!-- ============ STOPKA ============ -->
-	<footer class="footer">
-		<div class="footer-inner">
-			<div class="footer-col footer-col--brand">
-				<div class="footer-logo">
-					<img src="media/logo-panda.png" alt="Logo Panda Detailing" class="footer-logo-img" />
-					<span class="footer-logo-text">Panda<em>Detailing</em></span>
-				</div>
-				<p class="footer-tagline">
-					Panda Auto Detailing Toruń Adrian Lewiński
-				</p>
-				<div class="footer-socials">
-					<a href="https://www.facebook.com/PandaDetailingTorun" target="_blank" rel="noopener"
-						aria-label="Facebook" class="footer-social">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-							<path
-								d="M14 9H17V5.5C16.7 5.45 15.6 5.3 14.3 5.3C11.6 5.3 9.8 7 9.8 9.9V12.5H7V16.3H9.8V24H13.7V16.3H16.4L16.9 12.5H13.7V10.3C13.7 9.5 13.9 9 14 9Z"
-								fill="currentColor" />
-						</svg>
-					</a>
-					<a href="https://www.instagram.com/panda_detailing_torun" target="_blank" rel="noopener"
-						aria-label="Instagram" class="footer-social">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-							<rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" />
-							<circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6" />
-							<circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" />
-						</svg>
-					</a>
-				</div>
-			</div>
-
-			<div class="footer-col footer-col--contact">
-				<p class="footer-col-title">Kontakt</p>
-				<a href="tel:+48736100977" class="footer-line">+48 736 100 977</a>
-				<a href="mailto:padetailingtorun@gmail.com" class="footer-line">padetailingtorun@gmail.com</a>
-				<p class="footer-line footer-line--muted">
-					Stanisława Przybyszewskiego 6<br />87-100 Toruń
-				</p>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<p>
-				© 2026 Panda Auto Detailing Toruń. Wszelkie prawa
-				zastrzeżone.
-			</p>
-			<a href="#hero" class="footer-top">Do góry ↑</a>
-		</div>
-	</footer>
-
-	<!-- ============ FAB MENU ============ -->
-	<div class="fab-wrapper" id="fabWrapper">
-		<div class="fab-menu" id="fabMenu">
-			<a href="tel:+48736100977" class="fab-menu-item" aria-label="Zadzwoń" title="Zadzwoń">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-					<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-				</svg>
-			</a>
-			<a href="sms:+48736100977" class="fab-menu-item" aria-label="Wyślij SMS" title="Wyślij SMS">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-					<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-				</svg>
-			</a>
-			<a href="mailto:padetailingtorun@gmail.com" class="fab-menu-item" aria-label="Wyślij Email" title="Wyślij Email">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-					<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-					<polyline points="22,6 12,13 2,6"></polyline>
-				</svg>
-			</a>
-			<a href="https://www.instagram.com/panda_detailing_torun" target="_blank" rel="noopener" class="fab-menu-item" aria-label="Instagram" title="Instagram">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-					<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-					<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-					<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-				</svg>
-			</a>
-			<a href="https://www.facebook.com/PandaDetailingTorun" target="_blank" rel="noopener" class="fab-menu-item" aria-label="Facebook" title="Facebook">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-					<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-				</svg>
-			</a>
-		</div>
-		<button class="fab-btn" id="fabBtn" aria-label="Kontakt">
-			<div class="fab-btn-icons">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-					<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-				</svg>
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-					<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-					<polyline points="22,6 12,13 2,6"></polyline>
-				</svg>
-			</div>
-			<div class="fab-btn-close">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
-					<line x1="18" y1="6" x2="6" y2="18"></line>
-					<line x1="6" y1="6" x2="18" y2="18"></line>
-				</svg>
-			</div>
-		</button>
-	</div>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-	<script src="js/main.js"></script>
-</body>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
 </html>

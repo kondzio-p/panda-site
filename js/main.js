@@ -486,7 +486,24 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 10. Contact Section - Head
+    // 10. Pricing Section - Head
+    const pricingHead = document.querySelector('.pricing-head');
+    if (pricingHead) {
+      gsap.from(pricingHead.children, {
+        opacity: 0,
+        y: 30,
+        duration: 0.85,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: pricingHead,
+          start: 'top 85%',
+          once: true
+        }
+      });
+    }
+
+    // 11. Contact Section - Head
     const contactHead = document.querySelector('.contact-head');
     if (contactHead) {
       gsap.from(contactHead.children, {
@@ -503,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 11. Contact Section - Grid Cards
+    // 12. Contact Section - Grid Cards
     /*
     const contactGrid = document.querySelector('.contact-grid');
     if (contactGrid) {
