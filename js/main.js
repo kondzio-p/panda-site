@@ -13,6 +13,53 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+/* ============ Mapa — lazy load przy dojściu do końca cennika ============ */
+// Ciężki iframe Google Maps nie ładuje się na starcie (szybszy start strony i
+// brak połączenia z Google bez potrzeby). Ładowanie rusza w tle, gdy podczas
+// scrollowania dochodzimy do końca sekcji cennika — dzięki temu po dotarciu do
+// sekcji kontaktu mapa jest już gotowa i widoczna, bez potrzeby klikania.
+// Celowo poza blokiem GSAP z try — mapa musi działać nawet gdy CDN zawiedzie.
+document.addEventListener('DOMContentLoaded', () => {
+  const mapWrap = document.getElementById('mapa');
+  if (!mapWrap) return;
+
+  const src = mapWrap.getAttribute('data-map-src');
+  if (!src) return;
+
+  let loaded = false;
+  function loadMap() {
+    if (loaded) return;
+    loaded = true;
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.title = 'Mapa dojazdu — Panda Auto Detailing Toruń';
+    iframe.loading = 'lazy';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    mapWrap.replaceChildren(iframe);
+  }
+
+  // Tap/klik na placeholder również ładuje mapę od razu (zapas np. przy
+  // wejściu bezpośrednio w kotwicę #mapa z menu kontaktowego).
+  const facade = document.getElementById('mapFacade');
+  if (facade) facade.addEventListener('click', loadMap);
+
+  // Główny wyzwalacz: początek sekcji kontaktu = koniec sekcji cennika.
+  // Margines dolny daje zapas, by mapa zaczęła się ładować chwilę wcześniej.
+  const trigger = document.getElementById('kontakt') || mapWrap;
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        loadMap();
+        obs.disconnect();
+      }
+    }, { rootMargin: '0px 0px 300px 0px' });
+    io.observe(trigger);
+  } else {
+    loadMap();
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   try {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);

@@ -103,6 +103,11 @@ button {
   border-radius: 50%;
   color: var(--accent);
   font-size: 11px;
+  line-height: 1;
+  /* odziedziczony letter-spacing (0.14em) dokłada odstęp PO ostatniej cyfrze,
+     przez co „01" było zepchnięte w lewo od środka kółka; text-indent dokłada
+     taki sam odstęp z lewej i przywraca symetrię */
+  text-indent: 0.14em;
 }
 
 .eyebrow--light {
@@ -665,6 +670,7 @@ button {
 
 .about-img {
   width: 100%;
+  height: auto;
   aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 26px;
@@ -719,6 +725,7 @@ button {
   align-items: flex-start;
   gap: 14px;
   font-size: 14.5px;
+  line-height: 1.5;
   color: rgba(243, 242, 236, 0.85);
 }
 
@@ -726,6 +733,9 @@ button {
   flex-shrink: 0;
   width: 28px;
   height: 28px;
+  /* ikona (28px) jest wyższa niż wiersz tekstu — cofamy ją o połowę różnicy,
+     żeby jej środek trafił w środek pierwszej linii (działa też przy zawijaniu) */
+  margin-top: calc((1.5em - 28px) / 2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1167,11 +1177,11 @@ button {
   justify-content: center;
   width: 22px;
   height: 22px;
-  margin-top: 1px;
   border: 1px solid var(--accent-dim);
   border-radius: 50%;
   font-family: var(--mono);
   font-size: 12px;
+  line-height: 1;
   color: var(--accent);
 }
 
@@ -1281,6 +1291,67 @@ button {
   width: 100%;
   height: 100%;
   display: block;
+  border: 0;
+}
+
+/* Placeholder mapy — lekki stan przejściowy pokazywany, zanim leniwie
+   załadowany iframe Google Maps go zastąpi (patrz js/main.js) */
+.map-facade {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 28px;
+  text-align: center;
+  color: var(--off-white);
+  background:
+    radial-gradient(120% 120% at 50% 0%, var(--surface-2) 0%, var(--surface) 60%, var(--bg) 100%);
+}
+
+.map-facade-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  color: var(--accent);
+  background: rgba(255, 176, 0, 0.08);
+  border: 1px solid rgba(255, 176, 0, 0.28);
+  animation: map-pin-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes map-pin-pulse {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-3px); opacity: 0.75; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-facade-pin {
+    animation: none;
+  }
+}
+
+.map-facade-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.map-facade-title {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.map-facade-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .contact-sub {
@@ -1483,6 +1554,131 @@ a.footer-line:hover {
 
 .footer-top:hover {
   color: var(--accent);
+}
+
+.footer-legal {
+  color: var(--muted);
+  transition: color .2s ease;
+}
+
+.footer-legal:hover {
+  color: var(--accent);
+}
+
+/* ===================== STRONA PRAWNA (polityka prywatności) ===================== */
+.legal {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 70px) 32px 120px;
+}
+
+.legal-hero {
+  margin-bottom: 56px;
+}
+
+.legal-hero .section-title {
+  margin-top: 14px;
+}
+
+.legal-updated {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.legal-block {
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+}
+
+.legal-block:first-of-type {
+  border-top: 0;
+}
+
+.legal-block h2 {
+  display: flex;
+  gap: 12px;
+  /* środek małego numeru równo ze środkiem tytułu — zamiast linii bazowej,
+     przy której „01" lądowało pod tytułem */
+  align-items: center;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+.legal-block h2 span {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.legal-block p,
+.legal-block li {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.legal-block p {
+  margin: 0 0 14px;
+}
+
+.legal-block p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-block a {
+  color: var(--off-white);
+  border-bottom: 1px solid var(--accent-dim);
+  transition: color .2s ease;
+}
+
+.legal-block a:hover {
+  color: var(--accent);
+}
+
+.legal-block ul {
+  margin: 0 0 14px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.legal-block li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 9px;
+}
+
+.legal-block li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.legal-block strong {
+  color: var(--off-white);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .legal {
+    padding: calc(var(--nav-h-shrink) + 48px) 22px 90px;
+  }
 }
 
 /* ===================== LOADING SCREEN ===================== */
