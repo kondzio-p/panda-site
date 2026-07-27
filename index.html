@@ -533,9 +533,13 @@
 			<section class="hero" id="hero">
 				<div class="hero-bg">
 					<img
-						src="media/f30-biale.JPG"
+						src="media/f30-biale.webp"
 						alt="Detailing wnętrza samochodu"
 						class="hero-img hero-img--main"
+						width="2000"
+						height="1500"
+						fetchpriority="high"
+						decoding="async"
 					/>
 					<div class="hero-noise"></div>
 					<div class="hero-vignette"></div>
@@ -610,9 +614,13 @@
 				<div class="about-inner">
 					<div class="about-media">
 						<img
-							src="media/audi_a5.JPG"
+							src="media/audi_a5.webp"
 							alt="Czyszczenie tapicerki samochodowej"
 							class="about-img"
+							width="1500"
+							height="2000"
+							loading="lazy"
+							decoding="async"
 						/>
 						<div class="about-media-tag">
 							<span class="about-media-tag-num">100%</span>
@@ -1029,26 +1037,42 @@
 				<div class="gallery-grid">
 					<div class="gallery-item gallery-item--tall">
 						<img
-							src="media/mercedes_mat.JPG"
+							src="media/mercedes_mat.webp"
 							alt="Oklejanie ekranów folią matową"
+							width="2000"
+							height="2667"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 					<div class="gallery-item">
 						<img
-							src="media/mazda_czyszczenie.JPG"
+							src="media/mazda_czyszczenie.webp"
 							alt="Czyszczenie wnętrza samochodu"
+							width="2000"
+							height="1500"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 					<div class="gallery-item">
 						<img
-							src="media/koleos.JPG"
+							src="media/koleos.webp"
 							alt="Błyszcząca karoseria po detailingu"
+							width="1500"
+							height="2000"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 					<div class="gallery-item gallery-item--wide">
 						<img
-							src="media/kia_poziom.JPG"
+							src="media/kia_poziom.webp"
 							alt="Karoseria po polerowaniu"
+							width="2000"
+							height="1500"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 				</div>
@@ -1402,16 +1426,48 @@
 							przywróć blask swojemu samochodowi.
 						</p>
 					</div>
-					<div class="contact-map" id="mapa">
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2400.8179104980095!2d18.559826776950914!3d53.00565840015969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703355af9a1da2d%3A0xd82cd0346631f0d5!2sPanda%20Auto%20Detailing%20Toru%C5%84!5e0!3m2!1spl!2spl!4v1784726685634!5m2!1spl!2spl"
-							width="600"
-							height="450"
-							style="border: 0"
-							allowfullscreen=""
-							loading="lazy"
-							referrerpolicy="strict-origin-when-cross-origin"
-						></iframe>
+					<!-- Mapa ładowana leniwie: ciężki iframe Google Maps startuje
+					     dopiero, gdy podczas scrollowania dochodzimy do końca
+					     cennika (patrz js/main.js), dzięki czemu strona wczytuje
+					     się szybciej, a mapa jest gotowa zanim tu dotrzesz.
+					     Poniżej lekki placeholder pokazywany do tego czasu. -->
+					<div
+						class="contact-map"
+						id="mapa"
+						data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2400.8179104980095!2d18.559826776950914!3d53.00565840015969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703355af9a1da2d%3A0xd82cd0346631f0d5!2sPanda%20Auto%20Detailing%20Toru%C5%84!5e0!3m2!1spl!2spl!4v1784726685634!5m2!1spl!2spl"
+					>
+						<div class="map-facade" id="mapFacade" aria-hidden="true">
+							<span class="map-facade-pin">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									width="34"
+									height="34"
+								>
+									<path
+										d="M12 21C12 21 19 14.5 19 9.5C19 5.6 15.9 2.5 12 2.5C8.1 2.5 5 5.6 5 9.5C5 14.5 12 21 12 21Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linejoin="round"
+									/>
+									<circle
+										cx="12"
+										cy="9.5"
+										r="2.5"
+										stroke="currentColor"
+										stroke-width="1.5"
+									/>
+								</svg>
+							</span>
+							<span class="map-facade-text">
+								<span class="map-facade-title"
+									>Panda Auto Detailing Toruń</span
+								>
+								<span class="map-facade-sub"
+									>Stanisława Przybyszewskiego 6, Toruń</span
+								>
+							</span>
+						</div>
 					</div>
 				</div>
 
@@ -1630,6 +1686,9 @@
 					© <span data-year>2026</span> Panda Auto Detailing Toruń.
 					Wszelkie prawa zastrzeżone.
 				</p>
+				<a href="polityka-prywatnosci.html" class="footer-legal"
+					>Polityka prywatności</a
+				>
 				<img
 					src="media/logo-konradzkimedia.svg"
 					alt="KonradzkiMedia"
@@ -1716,7 +1775,9 @@
 						width="20"
 						height="20"
 					>
-						<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+						<path
+							d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+						></path>
 						<circle cx="12" cy="10" r="3"></circle>
 					</svg>
 				</a>
@@ -1816,9 +1877,9 @@
 			</button>
 		</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollToPlugin.min.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>
