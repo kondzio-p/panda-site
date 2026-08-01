@@ -497,6 +497,12 @@ button {
   transition: transform .3s var(--ease), box-shadow .3s ease, background .3s ease, color .3s ease;
 }
 
+/* przyciski magnetyczne prowadzi GSAP — transition na transformach
+   wygładzałoby ich ruch drugi raz i robiło z niego gumę */
+[data-magnetic] {
+  transition: box-shadow .3s ease, background .3s ease, color .3s ease;
+}
+
 .btn--primary {
   background: var(--accent);
   color: #0a0a0a;
@@ -910,8 +916,40 @@ button {
 }
 
 .process-step {
+  position: relative;
   border-top: 2px solid rgba(10, 10, 10, 0.12);
   padding-top: 24px;
+}
+
+/* akcentowa linia kreśli się nad krokami po wejściu sekcji w kadr
+   (klasę .is-drawn nadaje ScrollTrigger); opóźnienia budują sekwencję */
+.process-step::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease);
+}
+
+.process-grid.is-drawn .process-step::before {
+  transform: scaleX(1);
+}
+
+.process-grid.is-drawn .process-step:nth-child(2)::before {
+  transition-delay: 0.18s;
+}
+
+.process-grid.is-drawn .process-step:nth-child(3)::before {
+  transition-delay: 0.36s;
+}
+
+.process-grid.is-drawn .process-step:nth-child(4)::before {
+  transition-delay: 0.54s;
 }
 
 .process-step-num {

@@ -142,6 +142,31 @@ document.addEventListener('DOMContentLoaded', () => {
       fillMarquee();
       ScrollTrigger.refresh();
     });
+
+    // Pasek przyspiesza przy szybkim przewijaniu. playbackRate zamiast
+    // transformów, bo transform jest zajęty przez animację CSS przesuwu.
+    const cssAnim = marqueeTrack.getAnimations ? marqueeTrack.getAnimations()[0] : null;
+    if (cssAnim) {
+      const speed = { rate: 1 };
+      const applyRate = () => { cssAnim.playbackRate = speed.rate; };
+      ScrollTrigger.create({
+        trigger: document.body,
+        start: 0,
+        end: 'max',
+        onUpdate(self) {
+          const boost = gsap.utils.clamp(1, 3, 1 + Math.abs(self.getVelocity()) / 1400);
+          gsap.to(speed, {
+            rate: boost,
+            duration: 0.25,
+            overwrite: true,
+            onUpdate: applyRate,
+            onComplete: () => {
+              gsap.to(speed, { rate: 1, duration: 1.4, ease: 'power2.out', overwrite: true, onUpdate: applyRate });
+            }
+          });
+        }
+      });
+    }
   }
 
   /* ============ MOBILE DRAWER (GSAP) ============ */
@@ -224,6 +249,49 @@ document.addEventListener('DOMContentLoaded', () => {
       .from('.hero-sub', { opacity: 0, y: 24, duration: 0.8 }, 0.62)
       .from('.hero-actions .btn', { opacity: 0, y: 18, duration: 0.6, stagger: 0.1 }, 0.78)
       .from('.hero-scroll-hint', { opacity: 0, duration: 0.6 }, 1);
+  }
+
+  /* ============ HERO parallax on scroll ============ */
+  // Tło przesuwa się wolniej niż treść, a treść gaśnie przy zjeżdżaniu.
+  // Przesunięcie (yPercent 10) jest zawsze mniejsze niż wyjechany fragment
+  // sekcji, więc górna krawędź tła nigdy nie wjedzie w kadr.
+  if (!prefersReducedMotion && document.querySelector('.hero-bg')) {
+    gsap.to('.hero-bg', {
+      yPercent: 10,
+      scale: 1.05,
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    });
+    gsap.to('.hero-content', {
+      opacity: 0.15,
+      yPercent: -6,
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 35%', scrub: true }
+    });
+    gsap.to('.hero-scroll-hint', {
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: '25% top', scrub: true }
+    });
+  }
+
+  /* ============ MAGNETYCZNE CTA (desktop) ============ */
+  // data-magnetic wyłącza w CSS przejście na transformach, żeby quickTo
+  // nie było wygładzane drugi raz przez transition przycisku.
+  if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.btn, .nav-cta').forEach((el) => {
+      el.dataset.magnetic = '';
+      const xTo = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3.out' });
+      const yTo = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3.out' });
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        xTo((e.clientX - (r.left + r.width / 2)) * 0.3);
+        yTo((e.clientY - (r.top + r.height / 2)) * 0.3);
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.45)' });
+      });
+    });
   }
 
   /* ============ LOADING SCREEN ============ */
@@ -433,6 +501,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Services Section - Grid Cards
+    const servicesGrid = document.querySelector('.services-grid');
+    if (servicesGrid) {
+      gsap.from('.service-card', {
+        opacity: 0,
+        y: 36,
+        duration: 0.85,
+        stagger: 0.09,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: servicesGrid,
+          start: 'top 85%',
+          once: true
+        }
+      });
+    }
+
     // Process Section - Head
     const processHead = document.querySelector('.process-head');
     if (processHead) {
@@ -446,6 +531,24 @@ document.addEventListener('DOMContentLoaded', () => {
           trigger: processHead,
           start: 'top 85%',
           once: true
+        }
+      });
+    }
+
+    // Process Section - Steps + rysująca się linia (klasa steruje ::before w CSS)
+    const processGrid = document.querySelector('.process-grid');
+    if (processGrid) {
+      gsap.from('.process-step', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.14,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: processGrid,
+          start: 'top 82%',
+          once: true,
+          onEnter: () => processGrid.classList.add('is-drawn')
         }
       });
     }
@@ -502,6 +605,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Pricing Section - Groups
+    const pricingGroups = document.querySelector('.pricing-groups');
+    if (pricingGroups) {
+      gsap.from('.price-group', {
+        opacity: 0,
+        y: 40,
+        duration: 0.9,
+        stagger: 0.14,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: pricingGroups,
+          start: 'top 85%',
+          once: true
+        }
+      });
+    }
+
     // Contact Section - Head
     const contactHead = document.querySelector('.contact-head');
     if (contactHead) {
@@ -518,6 +638,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
+
+    // Contact Section - Grid Cards
+    const contactGrid = document.querySelector('.contact-grid');
+    if (contactGrid) {
+      gsap.from('.contact-card', {
+        opacity: 0,
+        y: 28,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: contactGrid,
+          start: 'top 88%',
+          once: true
+        }
+      });
+    }
+
+    // Podstrona usług (uslugi.html też ładuje ten plik)
+    const uslugiHero = document.querySelector('.uslugi-hero-inner');
+    if (uslugiHero) {
+      gsap.from(uslugiHero.children, {
+        opacity: 0,
+        y: 30,
+        duration: 0.85,
+        stagger: 0.1,
+        ease: 'power3.out',
+        delay: 0.2
+      });
+    }
+    document.querySelectorAll('.uslugi-row').forEach((row) => {
+      gsap.from(row, {
+        opacity: 0,
+        y: 28,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: row,
+          start: 'top 88%',
+          once: true
+        }
+      });
+    });
 
     window.addEventListener('load', () => {
       ScrollTrigger.refresh();
