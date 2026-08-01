@@ -3,9 +3,7 @@
 // =====================================================
 
 /* ============ Rok w stopce ============ */
-// Celowo poza blokiem try z GSAP-em poniżej: gdyby biblioteka z CDN-u się nie
-// wczytała, rok w stopce i tak musi być aktualny. W HTML-u zostaje wpisany rok
-// jako zapas dla wyłączonego JavaScriptu.
+// poza try z GSAP — rok musi się ustawić nawet gdy biblioteka z CDN nie wczyta się
 document.addEventListener('DOMContentLoaded', () => {
   const year = String(new Date().getFullYear());
   document.querySelectorAll('[data-year]').forEach((el) => {
@@ -13,12 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ============ Mapa — lazy load przy dojściu do końca cennika ============ */
-// Ciężki iframe Google Maps nie ładuje się na starcie (szybszy start strony i
-// brak połączenia z Google bez potrzeby). Ładowanie rusza w tle, gdy podczas
-// scrollowania dochodzimy do końca sekcji cennika — dzięki temu po dotarciu do
-// sekcji kontaktu mapa jest już gotowa i widoczna, bez potrzeby klikania.
-// Celowo poza blokiem GSAP z try — mapa musi działać nawet gdy CDN zawiedzie.
+/* ============ Mapa — lazy load ============ */
+// poza try z GSAP — mapa ma działać nawet gdy CDN zawiedzie
 document.addEventListener('DOMContentLoaded', () => {
   const mapWrap = document.getElementById('mapa');
   if (!mapWrap) return;
@@ -39,13 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mapWrap.replaceChildren(iframe);
   }
 
-  // Tap/klik na placeholder również ładuje mapę od razu (zapas np. przy
-  // wejściu bezpośrednio w kotwicę #mapa z menu kontaktowego).
+  // klik w placeholder też ładuje mapę od razu
   const facade = document.getElementById('mapFacade');
   if (facade) facade.addEventListener('click', loadMap);
 
-  // Główny wyzwalacz: początek sekcji kontaktu = koniec sekcji cennika.
-  // Margines dolny daje zapas, by mapa zaczęła się ładować chwilę wcześniej.
+  // start sekcji kontaktu ≈ koniec cennika; dolny margines = zapas na doczytanie
   const trigger = document.getElementById('kontakt') || mapWrap;
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries, obs) => {
@@ -263,15 +255,13 @@ document.addEventListener('DOMContentLoaded', () => {
       fabWrapper.classList.toggle('is-open');
     });
 
-    // Close after picking an option — inaczej kotwica w obrębie strony
-    // (lokalizacja) przewija stronę, a rozwinięte menu zasłania cel
+    // zamknij po wyborze — inaczej rozwinięte menu zasłania cel kotwicy
     fabWrapper.querySelectorAll('.fab-menu-item').forEach((item) => {
       item.addEventListener('click', () => {
         fabWrapper.classList.remove('is-open');
       });
     });
 
-    // Close on click outside
     document.addEventListener('click', (e) => {
       if (!fabWrapper.contains(e.target)) {
         fabWrapper.classList.remove('is-open');
@@ -354,38 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ============ SCROLL REVEALS (Premium ScrollTrigger Sequences) ============ */
+  /* ============ SCROLL REVEALS ============ */
   if (!prefersReducedMotion) {
-    const revealGroup = (items, trigger, options = {}) => {
-      const targets = gsap.utils.toArray(items);
-      if (!targets.length || !trigger) return;
-
-      gsap.fromTo(
-        targets,
-        {
-          autoAlpha: 0,
-          y: options.y ?? 40,
-          scale: options.scale ?? 1
-        },
-        {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: options.duration ?? 0.85,
-          stagger: options.stagger ?? 0.12,
-          ease: options.ease ?? 'power3.out',
-          clearProps: 'transform,opacity,visibility',
-          scrollTrigger: {
-            trigger,
-            start: options.start ?? 'top 82%',
-            once: true,
-            invalidateOnRefresh: true
-          }
-        }
-      );
-    };
-
-    // 1. About Section - Media (image and badge)
+    // About Section - Media
     const aboutMedia = document.querySelector('.about-media');
     if (aboutMedia) {
       const aboutImg = aboutMedia.querySelector('.about-img');
@@ -421,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0.4);
     }
 
-    // 2. About Section - Content Elements
+    // About Section - Content
     const aboutContent = document.querySelector('.about-content');
     if (aboutContent) {
       gsap.from(aboutContent.children, {
@@ -438,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 3. Services Section - Head
+    // Services Section - Head
     const servicesHead = document.querySelector('.services-head');
     if (servicesHead) {
       gsap.from(servicesHead.children, {
@@ -455,22 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 4. Services Section - Grid Cards
-    /*
-    const servicesGrid = document.querySelector('.services-grid');
-    if (servicesGrid) {
-      revealGroup(servicesGrid.querySelectorAll('.service-card'), servicesGrid, {
-        start: 'top 82%',
-        scale: 0.95,
-        stagger: {
-          each: 0.12,
-          grid: 'auto'
-        }
-      });
-    }
-    */
-
-    // 5. Services Section - Footnote
+    // Services Section - Footnote
     const servicesMore = document.querySelector('.services-more');
     if (servicesMore) {
       gsap.from(servicesMore.children, {
@@ -487,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 6. Process Section - Head
+    // Process Section - Head
     const processHead = document.querySelector('.process-head');
     if (processHead) {
       gsap.from(processHead.children, {
@@ -504,20 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 7. Process Section - Steps Grid
-    /*
-    const processGrid = document.querySelector('.process-grid');
-    if (processGrid) {
-      revealGroup(processGrid.querySelectorAll('.process-step'), processGrid, {
-        start: 'top 82%',
-        duration: 0.8,
-        stagger: 0.18,
-        ease: 'power3.out'
-      });
-    }
-    */
-
-    // 8. Gallery Section - Head
+    // Gallery Section - Head
     const galleryHead = document.querySelector('.gallery-head');
     if (galleryHead) {
       gsap.from(galleryHead.children, {
@@ -534,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 9. Gallery Section - Grid Items
+    // Gallery Section - Grid Items
     const galleryGrid = document.querySelector('.gallery-grid');
     if (galleryGrid) {
       gsap.from('.gallery-item', {
@@ -552,7 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 10. Pricing Section - Head
+    // Pricing Section - Head
     const pricingHead = document.querySelector('.pricing-head');
     if (pricingHead) {
       gsap.from(pricingHead.children, {
@@ -569,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 11. Contact Section - Head
+    // Contact Section - Head
     const contactHead = document.querySelector('.contact-head');
     if (contactHead) {
       gsap.from(contactHead.children, {
@@ -585,19 +518,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
-
-    // 12. Contact Section - Grid Cards
-    /*
-    const contactGrid = document.querySelector('.contact-grid');
-    if (contactGrid) {
-      revealGroup(contactGrid.querySelectorAll('.contact-card'), contactGrid, {
-        start: 'top 84%',
-        duration: 0.8,
-        stagger: 0.14,
-        ease: 'power3.out'
-      });
-    }
-    */
 
     window.addEventListener('load', () => {
       ScrollTrigger.refresh();

@@ -84,9 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ============ SCROLL REVEALS (Premium Uslugi Sequences) ============ */
+  /* ============ SCROLL REVEALS ============ */
   if (!prefersReducedMotion) {
-    // 1. Hero entrance
+    // Hero entrance
     gsap.from('.uslugi-hero-inner > *', {
       opacity: 0,
       y: 24,
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 2. Services list rows - staggered dual-axis reveal (number from left, body from bottom)
+    // Services list rows
     gsap.utils.toArray('.uslugi-row').forEach((row) => {
       const num = row.querySelector('.uslugi-row-num');
       const body = row.querySelector('.uslugi-row-body');
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0.12);
     });
 
-    // 3. CTA strip entrance
+    // CTA strip entrance
     gsap.from('.uslugi-cta > *', {
       opacity: 0,
       y: 26,
