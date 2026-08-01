@@ -1,0 +1,9 @@
+# notatki robocze dla Claude Code — nie publikować w repo
+CLAUDE.md
+
+# zależności (gdyby doszły narzędzia node, np. sharp do konwersji obrazów)
+node_modules/
+
+# śmieci systemowe
+Thumbs.db
+.DS_Store
