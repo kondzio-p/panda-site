@@ -838,12 +838,7 @@ button {
 .service-card {
   background: var(--surface);
   padding: 38px 32px;
-  transition: background .3s ease;
   position: relative;
-}
-
-.service-card:hover {
-  background: var(--surface-2);
 }
 
 .service-card--lg {
