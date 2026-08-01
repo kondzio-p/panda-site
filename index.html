@@ -67,9 +67,7 @@
 
 		<link rel="stylesheet" href="css/style.css" />
 
-		<!-- Dane strukturalne schema.org — pozwalają wyszukiwarkom i modelom AI
-		     odczytać firmę, adres, kontakt i cennik bez zgadywania z układu strony.
-		     Ceny muszą pozostać zgodne z sekcją #cennik. -->
+		<!-- schema.org — ceny muszą pozostać zgodne z sekcją #cennik -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -1426,11 +1424,7 @@
 							przywróć blask swojemu samochodowi.
 						</p>
 					</div>
-					<!-- Mapa ładowana leniwie: ciężki iframe Google Maps startuje
-					     dopiero, gdy podczas scrollowania dochodzimy do końca
-					     cennika (patrz js/main.js), dzięki czemu strona wczytuje
-					     się szybciej, a mapa jest gotowa zanim tu dotrzesz.
-					     Poniżej lekki placeholder pokazywany do tego czasu. -->
+					<!-- mapa: ładowanie lazy (patrz js/main.js) -->
 					<div
 						class="contact-map"
 						id="mapa"

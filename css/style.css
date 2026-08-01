@@ -35,9 +35,7 @@
 }
 
 html {
-  /* scroll-behavior: smooth — REMOVED: conflicts with GSAP ScrollTrigger
-     on mobile causing scroll to freeze/jank. GSAP ScrollToPlugin handles
-     smooth anchor scrolling instead. */
+  /* bez scroll-behavior: smooth — kolidował z GSAP ScrollTrigger na mobile */
 }
 
 
@@ -104,9 +102,7 @@ button {
   color: var(--accent);
   font-size: 11px;
   line-height: 1;
-  /* odziedziczony letter-spacing (0.14em) dokłada odstęp PO ostatniej cyfrze,
-     przez co „01" było zepchnięte w lewo od środka kółka; text-indent dokłada
-     taki sam odstęp z lewej i przywraca symetrię */
+  /* równoważy odziedziczony letter-spacing, by cyfry były wyśrodkowane w kółku */
   text-indent: 0.14em;
 }
 
@@ -733,8 +729,7 @@ button {
   flex-shrink: 0;
   width: 28px;
   height: 28px;
-  /* ikona (28px) jest wyższa niż wiersz tekstu — cofamy ją o połowę różnicy,
-     żeby jej środek trafił w środek pierwszej linii (działa też przy zawijaniu) */
+  /* wyrównuje środek ikony do środka pierwszej linii tekstu */
   margin-top: calc((1.5em - 28px) / 2);
   border-radius: 50%;
   display: flex;
@@ -1187,8 +1182,7 @@ button {
   }
 }
 
-/* cennik — układ mobilny: nagłówek tabeli znika, ceny stają się kaflami
-   z podpisem rozmiaru z atrybutu data-size */
+/* cennik mobilnie — ceny jako kafle z rozmiarem z data-size */
 @media (max-width: 700px) {
   .pricing {
     padding: 90px 18px;
@@ -1289,8 +1283,7 @@ button {
   border: 0;
 }
 
-/* Placeholder mapy — lekki stan przejściowy pokazywany, zanim leniwie
-   załadowany iframe Google Maps go zastąpi (patrz js/main.js) */
+/* placeholder mapy — do czasu leniwego załadowania iframe (patrz js/main.js) */
 .map-facade {
   width: 100%;
   height: 100%;
@@ -1596,8 +1589,7 @@ a.footer-line:hover {
 .legal-block h2 {
   display: flex;
   gap: 12px;
-  /* środek małego numeru równo ze środkiem tytułu — zamiast linii bazowej,
-     przy której „01" lądowało pod tytułem */
+  /* numer wyśrodkowany względem tytułu, nie na jego linii bazowej */
   align-items: center;
   font-family: var(--display);
   font-weight: 400;
@@ -1752,10 +1744,8 @@ a.footer-line:hover {
   overflow: hidden;
 }
 
-/* Wysokość musi być konkretna, żeby dało się ją animować (auto się nie animuje).
-   Wzór: liczba pozycji × 44px + odstępy (n-1) × 12px + 40px paddingu + 64px przycisku.
-   Przy 6 pozycjach: 264 + 60 + 40 + 64 = 428px — po dodaniu lub usunięciu
-   pozycji w .fab-menu trzeba przeliczyć tę wartość. */
+/* konkretna wysokość (auto się nie animuje); przy zmianie liczby pozycji w
+   .fab-menu przelicz: n×44px + (n-1)×12px + 40px padding + 64px przycisk */
 .fab-wrapper.is-open {
   height: 428px;
 }

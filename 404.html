@@ -23,9 +23,7 @@
 			rel="stylesheet"
 		/>
 
-		<!-- Style są wpisane w stronę celowo: błąd 404 może zostać zwrócony
-		     spod dowolnego adresu, więc strona nie powinna zależeć od
-		     zewnętrznego arkusza, który mógłby się nie wczytać. -->
+		<!-- style inline celowo — 404 nie może zależeć od zewnętrznego arkusza -->
 		<style>
 			:root {
 				--bg: #0a0a0a;
@@ -162,10 +160,8 @@
 				transform: translateY(-2px);
 			}
 
-			/* Pasek celowo animuje się także przy prefers-reduced-motion:
-			   to wskaźnik postępu odliczania, a nie efekt ozdobny — zatrzymany
-			   pokazywałby od razu 100% i gubił informację, ile czasu zostało.
-			   Wyłączamy tu tylko ruch dekoracyjny. */
+			/* pasek animuje się też przy reduced-motion — to wskaźnik odliczania,
+			   nie ozdoba; wyłączamy tu tylko ruch dekoracyjny */
 			@media (prefers-reduced-motion: reduce) {
 				.nf-btn:hover {
 					transform: none;
