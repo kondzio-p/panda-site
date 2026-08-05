@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       defaults: { ease: 'power3.out' },
       onComplete: () => {
         // Clear GSAP properties to avoid interference with CSS hover transition styles
-        gsap.set('.hero-actions .btn, .hero-scroll-hint, .hero-eyebrow, .hero-title, .hero-sub', { clearProps: 'transform,opacity' });
+        gsap.set('.hero-actions .btn, .hero-scroll-hint, .hero-eyebrow, .hero-title, .hero-sub, .hero-rating', { clearProps: 'transform,opacity' });
       }
     });
     heroTl
@@ -248,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .from('.hero-title', { opacity: 0, y: 40, duration: 0.9 }, 0.42)
       .from('.hero-sub', { opacity: 0, y: 24, duration: 0.8 }, 0.62)
       .from('.hero-actions .btn', { opacity: 0, y: 18, duration: 0.6, stagger: 0.1 }, 0.78)
+      .from('.hero-rating', { opacity: 0, y: 14, duration: 0.6 }, 0.92)
       .from('.hero-scroll-hint', { opacity: 0, duration: 0.6 }, 1);
   }
 
