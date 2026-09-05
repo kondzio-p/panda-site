@@ -52,6 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+/* ============ NAV: bieżąca podstrona ============ */
+// poza try z GSAP — podświetlenie menu to czysty DOM, ma działać gdy CDN zawiedzie
+document.addEventListener('DOMContentLoaded', () => {
+  const here = location.pathname.split('/').pop() || 'index.html';
+  const links = [...document.querySelectorAll('.nav-link, .nav-drawer-link')];
+
+  let current = links.filter((l) => {
+    const href = l.getAttribute('href');
+    return !href.startsWith('#') && href.split('#')[0].split('/').pop() === here;
+  });
+
+  // podstrony usług nie mają własnej pozycji w menu — świeci się nadrzędne „Usługi”
+  if (!current.length && document.querySelector('.uslugi-hero')) {
+    current = links.filter((l) => l.getAttribute('href') === 'uslugi.html');
+  }
+
+  current.forEach((l) => {
+    l.classList.add('is-active');
+    l.setAttribute('aria-current', 'page');
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   try {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -239,12 +261,11 @@ document.addEventListener('DOMContentLoaded', () => {
       defaults: { ease: 'power3.out' },
       onComplete: () => {
         // Clear GSAP properties to avoid interference with CSS hover transition styles
-        gsap.set('.hero-actions .btn, .hero-scroll-hint, .hero-eyebrow, .hero-title, .hero-sub, .hero-rating', { clearProps: 'transform,opacity' });
+        gsap.set('.hero-actions .btn, .hero-scroll-hint, .hero-title, .hero-sub, .hero-rating', { clearProps: 'transform,opacity' });
       }
     });
     heroTl
       .from('.hero-img--main', { scale: 1.22, duration: 1.6, ease: 'power2.out' }, 0)
-      .from('.hero-eyebrow', { opacity: 0, y: 16, duration: 0.7 }, 0.3)
       .from('.hero-title', { opacity: 0, y: 40, duration: 0.9 }, 0.42)
       .from('.hero-sub', { opacity: 0, y: 24, duration: 0.8 }, 0.62)
       .from('.hero-actions .btn', { opacity: 0, y: 18, duration: 0.6, stagger: 0.1 }, 0.78)
