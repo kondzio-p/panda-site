@@ -74,6 +74,118 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+/* ============ Galeria — lightbox ============ */
+// poza try z GSAP — przeglądanie zdjęć nie może zależeć od CDN
+document.addEventListener('DOMContentLoaded', () => {
+  const box = document.getElementById('lightbox');
+  const items = [...document.querySelectorAll('.gallery-item')];
+  if (!box || !items.length || typeof box.showModal !== 'function') return;
+
+  const img = box.querySelector('.lightbox-img');
+  const caption = box.querySelector('.lightbox-caption');
+  const current = box.querySelector('.lightbox-current');
+  box.querySelector('.lightbox-total').textContent = items.length;
+  let index = 0;
+
+  const wrap = (i) => (i + items.length) % items.length;
+
+  function show(i) {
+    index = wrap(i);
+    const item = items[index];
+    const alt = item.querySelector('img').alt;
+    img.classList.add('is-loading');
+    img.src = item.href;
+    img.alt = alt;
+    if (img.complete) img.classList.remove('is-loading');
+    caption.textContent = alt;
+    current.textContent = index + 1;
+    // sąsiednie zdjęcia doczytane z wyprzedzeniem, żeby przewijanie nie mrugało
+    new Image().src = items[wrap(index + 1)].href;
+    new Image().src = items[wrap(index - 1)].href;
+  }
+
+  function open(i) {
+    show(i);
+    box.showModal();
+  }
+
+  img.addEventListener('load', () => img.classList.remove('is-loading'));
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  // pasek „+N” liczy kafle ukryte przez CSS — na telefonie widać ich mniej niż na desktopie
+  const more = document.querySelector('.gallery-more');
+  if (more) {
+    const count = more.querySelector('.gallery-more-count');
+    const bg = more.querySelector('.gallery-more-bg');
+    const firstHidden = () => items.findIndex((it) => it.offsetParent === null);
+
+    const update = () => {
+      const first = firstHidden();
+      const hidden = items.filter((it) => it.offsetParent === null).length;
+      more.hidden = hidden === 0;
+      if (!hidden) return;
+      count.textContent = '+' + hidden;
+      more.href = items[first].href;
+      bg.src = items[first].querySelector('img').getAttribute('src');
+    };
+    update();
+    window.addEventListener('resize', update);
+
+    more.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(Math.max(firstHidden(), 0));
+    });
+  }
+
+  box.querySelector('.lightbox-prev').addEventListener('click', () => show(index - 1));
+  box.querySelector('.lightbox-next').addEventListener('click', () => show(index + 1));
+  box.querySelector('.lightbox-close').addEventListener('click', () => box.close());
+
+  box.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') show(index + 1);
+    if (e.key === 'ArrowLeft') show(index - 1);
+  });
+
+  // kółko myszy przewija zdjęcia; blokada, żeby jeden ruch touchpada nie przeskakiwał kilku
+  let wheelAt = 0;
+  box.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    const now = Date.now();
+    if (Math.abs(delta) < 8 || now - wheelAt < 450) return;
+    wheelAt = now;
+    show(index + (delta > 0 ? 1 : -1));
+  }, { passive: false });
+
+  let startX = null;
+  let swiped = false;
+  box.addEventListener('pointerdown', (e) => {
+    startX = e.clientX;
+    swiped = false;
+  });
+  box.addEventListener('pointerup', (e) => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    if (Math.abs(dx) > 50) {
+      swiped = true;
+      show(index + (dx < 0 ? 1 : -1));
+    }
+  });
+
+  // klik w ciemne tło zamyka, klik w samo zdjęcie nie
+  box.addEventListener('click', (e) => {
+    if (swiped) return;
+    if (e.target === box || e.target.classList.contains('lightbox-stage')) box.close();
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   try {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -261,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
       defaults: { ease: 'power3.out' },
       onComplete: () => {
         // Clear GSAP properties to avoid interference with CSS hover transition styles
-        gsap.set('.hero-actions .btn, .hero-scroll-hint, .hero-title, .hero-sub, .hero-rating', { clearProps: 'transform,opacity' });
+        gsap.set('.hero-actions .btn, .hero-scroll-hint, .hero-title, .hero-sub, .hero-badges > *', { clearProps: 'transform,opacity' });
       }
     });
     heroTl
@@ -269,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .from('.hero-title', { opacity: 0, y: 40, duration: 0.9 }, 0.42)
       .from('.hero-sub', { opacity: 0, y: 24, duration: 0.8 }, 0.62)
       .from('.hero-actions .btn', { opacity: 0, y: 18, duration: 0.6, stagger: 0.1 }, 0.78)
-      .from('.hero-rating', { opacity: 0, y: 14, duration: 0.6 }, 0.92)
+      .from('.hero-badges > *', { opacity: 0, y: 14, duration: 0.6, stagger: 0.12 }, 0.92)
       .from('.hero-scroll-hint', { opacity: 0, duration: 0.6 }, 1);
   }
 
@@ -595,7 +707,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gallery Section - Grid Items
     const galleryGrid = document.querySelector('.gallery-grid');
     if (galleryGrid) {
-      gsap.from('.gallery-item', {
+      gsap.from('.gallery-item, .gallery-more', {
         opacity: 0,
         scale: 0.93,
         y: 40,
