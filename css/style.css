@@ -496,7 +496,7 @@ button {
 }
 
 .hero-rating,
-.hero-hyper {
+.hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -509,7 +509,7 @@ button {
 }
 
 .hero-rating:hover,
-.hero-hyper:hover {
+.hero-badge:hover {
   border-color: rgba(255, 176, 0, 0.45);
   background: rgba(10, 10, 10, 0.72);
 }
@@ -530,7 +530,7 @@ button {
 }
 
 .hero-rating-meta,
-.hero-hyper-label {
+.hero-badge-label {
   font-size: 13px;
   color: rgba(243, 242, 236, 0.6);
 }
@@ -543,6 +543,11 @@ button {
 
 .hyper-word {
   height: 11px;
+  width: auto;
+}
+
+.hero-mooveno {
+  height: 14px;
   width: auto;
 }
 
@@ -2397,13 +2402,13 @@ a.footer-line:hover {
   }
 
   .hero-rating,
-  .hero-hyper {
+  .hero-badge {
     gap: 7px;
     padding: 8px 13px;
   }
 
   .hero-rating-meta,
-  .hero-hyper-label {
+  .hero-badge-label {
     font-size: 12px;
   }
 
