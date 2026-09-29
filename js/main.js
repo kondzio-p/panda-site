@@ -722,6 +722,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Certyfikaty
+    const certsInner = document.querySelector('.certs-inner');
+    if (certsInner) {
+      gsap.from('.certs-media, .certs-content > *', {
+        opacity: 0,
+        y: 30,
+        duration: 0.85,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: certsInner,
+          start: 'top 82%',
+          once: true
+        }
+      });
+    }
+
     // Pricing Section - Head
     const pricingHead = document.querySelector('.pricing-head');
     if (pricingHead) {

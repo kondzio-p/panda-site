@@ -1187,6 +1187,81 @@ button {
   grid-column: span 2;
 }
 
+/* ===================== CERTYFIKATY ===================== */
+.certs {
+  padding: 0 32px 130px;
+}
+
+.certs-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-top: 110px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+
+.certs-media {
+  margin: 0;
+}
+
+.certs-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 26px;
+}
+
+.certs-media figcaption {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.certs-list {
+  margin: 34px 0 36px;
+  border-top: 1px solid var(--line);
+}
+
+.cert {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cert-logo {
+  flex: 0 0 110px;
+  display: flex;
+  align-items: center;
+}
+
+.cert-logo img {
+  width: 100px;
+  height: auto;
+}
+
+.cert h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.cert p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(243, 242, 236, 0.68);
+  margin: 0;
+  max-width: 54ch;
+}
+
 /* ===================== LIGHTBOX ===================== */
 html:has(.lightbox[open]) {
   overflow: hidden;
@@ -1799,22 +1874,35 @@ html:has(.lightbox[open]) {
   margin: 0 0 26px;
 }
 
-.footer-hyper {
+.footer-partners {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: -8px 0 26px;
+}
+
+.footer-partner {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: -8px 0 26px;
   font-size: 13px;
   color: var(--muted);
   transition: color .2s ease;
 }
 
-.footer-hyper:hover {
+.footer-partner:hover {
   color: var(--off-white);
 }
 
-.footer-hyper .hyper-word {
+.footer-partner .hyper-word {
   height: 12px;
+  opacity: .85;
+}
+
+.footer-partner-mooveno {
+  height: 15px;
+  width: auto;
   opacity: .85;
 }
 
@@ -2191,6 +2279,17 @@ a.footer-line:hover {
     margin: 0 auto;
   }
 
+  .certs-inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding-top: 80px;
+  }
+
+  .certs-media {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2316,9 +2415,24 @@ a.footer-line:hover {
   .services,
   .process,
   .gallery,
+  .certs,
   .contact {
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  .cert {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .cert-logo {
+    flex-basis: 64px;
+    padding-top: 3px;
+  }
+
+  .cert-logo img {
+    width: 64px;
   }
 
   .services-grid {
