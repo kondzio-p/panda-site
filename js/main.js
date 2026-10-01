@@ -739,6 +739,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Doposażenie
+    const retrofitInner = document.querySelector('.retrofit-inner');
+    if (retrofitInner) {
+      gsap.from('.retrofit-content > *, .retrofit-media', {
+        opacity: 0,
+        y: 30,
+        duration: 0.85,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: retrofitInner,
+          start: 'top 82%',
+          once: true
+        }
+      });
+    }
+
     // Pricing Section - Head
     const pricingHead = document.querySelector('.pricing-head');
     if (pricingHead) {

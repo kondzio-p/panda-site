@@ -234,3 +234,25 @@
 		width: 64px;
 	}
 }
+
+/* galeria na podstronie doposażenia — wszystkie kafle widoczne, także na telefonie */
+.retro-gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 14px;
+	margin-top: 26px;
+}
+.retro-gallery .gallery-item {
+	display: block;
+	aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 600px) {
+	.retro-gallery {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+	}
+	.retro-gallery .gallery-item {
+		border-radius: 14px;
+	}
+}
