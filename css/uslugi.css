@@ -256,3 +256,24 @@
 		border-radius: 14px;
 	}
 }
+
+/* zdjęcie w opisie usługi (podstrona PPF) */
+.uslugi-figure {
+	margin: 22px 0 0;
+	max-width: 360px;
+}
+.uslugi-figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 18px;
+}
+.uslugi-figure figcaption {
+	margin-top: 10px;
+	font-size: 14px;
+	color: var(--muted);
+}
+.uslugi-cta p a {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
