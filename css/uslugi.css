@@ -277,3 +277,19 @@
 	text-decoration: underline;
 	text-underline-offset: 3px;
 }
+
+/* pakiety na podstronach stoją na --bg — karty dostają --surface jak grupy cennika */
+.uslugi-block--pakiety .pakiet {
+	background: var(--surface);
+}
+.uslugi-block--pakiety .pakiet--prime {
+	background:
+		radial-gradient(120% 60% at 100% 0%, rgba(255, 176, 0, 0.09), transparent 60%),
+		var(--surface);
+}
+.uslugi-block--pakiety {
+	max-width: 1360px;
+}
+.uslugi-block--pakiety .pakiety {
+	margin-bottom: 0;
+}

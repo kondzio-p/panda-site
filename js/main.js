@@ -790,6 +790,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Pakiety korekty i ochrony lakieru (główna i podstrony)
+    const pakietyGrid = document.querySelector('.pakiety-grid');
+    if (pakietyGrid) {
+      gsap.from(pakietyGrid.children, {
+        opacity: 0,
+        y: 40,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: pakietyGrid,
+          start: 'top 85%',
+          once: true
+        }
+      });
+    }
+
     // Contact Section - Head
     const contactHead = document.querySelector('.contact-head');
     if (contactHead) {

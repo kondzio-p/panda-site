@@ -1663,6 +1663,304 @@ html:has(.lightbox[open]) {
   }
 }
 
+/* ---------- pakiety korekty i ochrony lakieru (główna, powłoki, cennik) ---------- */
+.pakiety {
+  margin-bottom: 64px;
+}
+
+.pakiety-head {
+  max-width: 640px;
+  margin-bottom: 30px;
+}
+
+.pakiety-head h2,
+.pakiety-head h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+
+.pakiety-head p:last-child {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+}
+
+.pakiety-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.pakiet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 26px 24px 24px;
+}
+
+.pakiet--prime {
+  border-color: var(--accent-dim);
+  background:
+    radial-gradient(120% 60% at 100% 0%, rgba(255, 176, 0, 0.09), transparent 60%),
+    var(--bg);
+}
+
+.pakiet-flag {
+  position: absolute;
+  top: -11px;
+  left: 22px;
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--accent);
+  color: #0a0a0a;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pakiet-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.pakiet-head h3,
+.pakiet-head h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin: 0 0 8px;
+}
+
+.pakiet-set {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* stała wysokość — pudełko GO ma inne proporcje niż pozostałe trzy */
+.pakiet-img {
+  width: auto;
+  height: 124px;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.55));
+}
+
+.pakiet-ochrona {
+  align-self: flex-start;
+  margin: 18px 0 0;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.pakiet-opis {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(243, 242, 236, 0.7);
+  margin: 16px 0 0;
+}
+
+.pakiet-lista {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 9px;
+}
+
+.pakiet-lista li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: rgba(243, 242, 236, 0.86);
+}
+
+.pakiet-lista li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted-2);
+}
+
+.pakiet-lista .pakiet-gratis::before {
+  background: var(--accent);
+}
+
+.pakiet-gratis span {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255, 176, 0, 0.14);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+
+/* cena dociśnięta do dołu, żeby w rzędzie kart stała na jednej wysokości */
+.pakiet-cena {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.pakiet-cena-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.pakiet-cena-row + .pakiet-cena-row {
+  margin-top: 10px;
+}
+
+.pakiet-cena-row span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.pakiet-cena-row strong {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--off-white);
+  white-space: nowrap;
+}
+
+.pakiet-cena-row:only-of-type strong {
+  font-size: 2.6rem;
+}
+
+.pakiet--prime .pakiet-cena-row strong {
+  color: var(--accent);
+}
+
+.pakiet-cena-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+.pakiety-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px 40px;
+  align-items: start;
+  margin-top: 22px;
+}
+
+.pakiety-karta {
+  padding: 18px 20px 18px 56px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  position: relative;
+}
+
+/* tarcza w kółku — ten sam język co znak „!” w stopce cennika */
+.pakiety-karta::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 19px;
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z'/%3E%3Cpath d='M8.5 12l2.5 2.5 4.5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z'/%3E%3Cpath d='M8.5 12l2.5 2.5 4.5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.pakiety-karta h3,
+.pakiety-karta h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 2px 0 6px;
+}
+
+.pakiety-karta p,
+.pakiety-uwaga {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+.pakiety-uwaga {
+  padding-top: 4px;
+}
+
+.pakiety-uwaga strong {
+  color: var(--off-white);
+}
+
+@media (max-width: 1200px) {
+  .pakiety-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 26px;
+  }
+}
+
+@media (max-width: 700px) {
+  .pakiety {
+    margin-bottom: 48px;
+  }
+
+  .pakiety-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pakiet {
+    padding: 24px 20px 20px;
+    border-radius: 18px;
+  }
+
+  .pakiet-img {
+    height: 100px;
+  }
+
+  .pakiety-foot {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===================== CONTACT ===================== */
 .contact {
   padding: 130px 32px;
