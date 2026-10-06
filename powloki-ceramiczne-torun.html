@@ -74,7 +74,7 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/uslugi.css" />
 
-		<!-- schema.org — ścieżka nawigacji, usługa i pytania -->
+		<!-- schema.org — ścieżka nawigacji, usługa z pakietami i pytania; ceny zgodne z #pakiety i z index.html -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -115,6 +115,69 @@
 						"areaServed": {
 							"@type": "City",
 							"name": "Toruń"
+						},
+						"hasOfferCatalog": {
+							"@type": "OfferCatalog",
+							"name": "Pakiety korekty i ochrony lakieru",
+							"itemListElement": [
+								{
+									"@type": "Offer",
+									"itemOffered": {
+										"@type": "Service",
+										"name": "Panda GO — korekta One Step i powłoka HYPER GO, ochrona do 18 miesięcy",
+										"url": "https://pandadetailing.pl/powloki-ceramiczne-torun.html#pakiety"
+									},
+									"priceSpecification": {
+										"@type": "PriceSpecification",
+										"priceCurrency": "PLN",
+										"minPrice": 1200,
+										"valueAddedTaxIncluded": true
+									}
+								},
+								{
+									"@type": "Offer",
+									"itemOffered": {
+										"@type": "Service",
+										"name": "Panda GUARD — korekta One Step i powłoka HYPER GUARD, ochrona 2–3 lata / 40 000 km",
+										"url": "https://pandadetailing.pl/powloki-ceramiczne-torun.html#pakiety"
+									},
+									"priceSpecification": {
+										"@type": "PriceSpecification",
+										"priceCurrency": "PLN",
+										"minPrice": 1500,
+										"valueAddedTaxIncluded": true
+									}
+								},
+								{
+									"@type": "Offer",
+									"itemOffered": {
+										"@type": "Service",
+										"name": "Panda HERO — korekta i powłoka HYPER HERO Graphene, ochrona do 5 lat",
+										"url": "https://pandadetailing.pl/powloki-ceramiczne-torun.html#pakiety"
+									},
+									"priceSpecification": {
+										"@type": "PriceSpecification",
+										"priceCurrency": "PLN",
+										"minPrice": 2000,
+										"maxPrice": 2500,
+										"valueAddedTaxIncluded": true
+									}
+								},
+								{
+									"@type": "Offer",
+									"itemOffered": {
+										"@type": "Service",
+										"name": "Panda PRIME — korekta wieloetapowa i powłoka HYPER PRIME, ochrona do 7 lat / 110 000 km",
+										"url": "https://pandadetailing.pl/powloki-ceramiczne-torun.html#pakiety"
+									},
+									"priceSpecification": {
+										"@type": "PriceSpecification",
+										"priceCurrency": "PLN",
+										"minPrice": 2800,
+										"valueAddedTaxIncluded": true
+									}
+								}
+							]
 						}
 					},
 					{
