@@ -551,6 +551,11 @@ button {
   width: auto;
 }
 
+.hero-ppfworld {
+  height: 16px;
+  width: auto;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1240,15 +1245,6 @@ button {
   aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 26px;
-}
-
-.certs-media figcaption {
-  margin-top: 14px;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted-2);
 }
 
 .certs-list {
