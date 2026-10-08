@@ -974,6 +974,28 @@ button {
   border-bottom-color: var(--accent);
 }
 
+.service-card .service-btn {
+  gap: 10px;
+  margin-top: 22px;
+  padding: 12px 22px;
+  font-size: 13.5px;
+}
+
+.service-btn svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .services-more {
   margin-top: 50px;
   padding-top: 40px;
