@@ -2227,6 +2227,12 @@ html:has(.lightbox[open]) {
   opacity: .85;
 }
 
+.footer-partner-ppfworld {
+  height: 17px;
+  width: auto;
+  opacity: .85;
+}
+
 .footer-socials {
   display: flex;
   gap: 12px;
