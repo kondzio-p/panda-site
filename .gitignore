@@ -7,3 +7,7 @@ node_modules/
 # śmieci systemowe
 Thumbs.db
 .DS_Store
+
+# Pliki lokalne
+CLAUDE.md
+AGENTS.md
