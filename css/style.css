@@ -2640,6 +2640,29 @@ a.footer-line:hover {
   }
 }
 
+/* 7 pozycji menu nie mieści się w pełnej wersji poniżej ~1240px — mniejsze odstępy i bez numerów */
+@media (max-width: 1240px) {
+  .nav-links {
+    gap: 2px;
+  }
+
+  .nav-link {
+    padding: 9px 10px;
+    white-space: nowrap;
+  }
+
+  .nav-link span {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav-inner {
+    padding: 0 20px;
+    gap: 14px;
+  }
+}
+
 @media (max-width: 950px) {
 
   .nav-links,
