@@ -23,19 +23,11 @@
 	border-top: 1px solid var(--line);
 }
 .uslugi-row {
-	display: grid;
-	grid-template-columns: 110px 1fr;
-	gap: 36px;
 	padding: 46px 0;
 	border-bottom: 1px solid var(--line);
 }
 .uslugi-row--last {
 	border-bottom: none;
-}
-.uslugi-row-num {
-	font-family: var(--display);
-	font-size: 18px;
-	color: var(--accent);
 }
 .uslugi-row-body h2 {
 	font-size: 23px;
@@ -88,10 +80,6 @@
 	}
 	.uslugi-list {
 		padding: 0 18px 40px;
-	}
-	.uslugi-row {
-		grid-template-columns: 1fr;
-		gap: 12px;
 	}
 	.uslugi-cta {
 		padding: 80px 20px;
