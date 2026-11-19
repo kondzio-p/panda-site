@@ -877,7 +877,18 @@ button {
   font-size: 16px;
   color: var(--muted);
   line-height: 1.65;
-  max-width: 48ch;
+  max-width: 56ch;
+}
+
+/* linki do podstron usług w opisie sekcji */
+.services-sub a {
+  color: var(--off-white);
+  border-bottom: 1px solid var(--accent-dim);
+  transition: color .2s ease;
+}
+
+.services-sub a:hover {
+  color: var(--accent);
 }
 
 .services-grid {

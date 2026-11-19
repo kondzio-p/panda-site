@@ -369,3 +369,65 @@
 		grid-template-columns: 1fr 1fr;
 	}
 }
+
+/* ===================== CENNIK: odpowiedź, spis sekcji, linki grup ===================== */
+.cennik-answer {
+	font-size: 16px;
+	line-height: 1.65;
+	color: var(--muted);
+	margin: 0 0 22px;
+	max-width: 56ch;
+	padding-left: 16px;
+	border-left: 2px solid var(--accent);
+}
+.cennik-answer strong {
+	display: block;
+	color: var(--off-white);
+	font-weight: 700;
+	margin-bottom: 4px;
+}
+.cennik-toc {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 34px;
+}
+.cennik-toc a {
+	font-family: var(--mono);
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--off-white);
+	padding: 8px 12px;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	transition: border-color 0.2s ease, color 0.2s ease;
+}
+.cennik-toc a:hover {
+	color: var(--accent);
+	border-color: var(--accent-dim);
+}
+.price-group-link {
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 14px;
+	color: var(--accent);
+}
+.price-group-link:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.pakiety-head p a {
+	color: var(--off-white);
+	border-bottom: 1px solid var(--accent-dim);
+}
+.pakiety-head p a:hover {
+	color: var(--accent);
+}
+#pakiety,
+#cennik-detailing,
+#cennik-korekta,
+#cennik-folie,
+#pytania {
+	scroll-margin-top: calc(var(--nav-h) + 24px);
+}
